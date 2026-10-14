@@ -339,6 +339,47 @@ input[type=range]{width:100%;accent-color:#bcd28c}
 html.calm .rise.pre{transform:none;opacity:1}
 html.calm *,html.calm *::before,html.calm *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
 html.calm .breath-orb{transform:scale(.9)}
+
+/* ---------- new chapters ---------- */
+.chapter{display:grid;gap:clamp(1.6rem,4vw,2.6rem)}
+.stage{position:relative;width:100%;aspect-ratio:16/9;max-width:100%;border-radius:0 3rem 0 3rem;overflow:hidden;background:#0d140e;box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.08)}
+.stage.tall{aspect-ratio:4/3}
+@media (max-width:640px){.stage{aspect-ratio:4/5}.stage.wide-m{aspect-ratio:1/1}}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.picker{display:flex;flex-wrap:wrap;gap:.45rem}
+.duo{display:grid;gap:clamp(1.4rem,4vw,2.6rem);grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));align-items:start}
+.duo > *{min-width:0}
+.card{display:grid;gap:.6rem;align-content:start}
+.card h3{font-size:var(--step-2)}
+.card .sub{font-style:italic;color:var(--muted)}
+.card dl{display:grid;grid-template-columns:auto 1fr;gap:.2rem .9rem;margin:.2rem 0 0;font-family:var(--font-ui);font-size:.84rem;border-top:1px solid var(--line);padding-top:.6rem}
+.card dt{color:var(--muted)}.card dd{margin:0}
+.gcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:2rem 1.6rem}
+.gcard{display:grid;gap:.5rem;align-content:start;padding-top:1rem;border-top:1px solid var(--line)}
+.gcard .big{font-family:var(--font-display);font-size:var(--step-3);line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.gcard h3{font-size:1.45rem}
+.gcard p{font-size:.95rem}
+.figure-hot{position:relative;width:100%;max-width:620px;margin-inline:auto;aspect-ratio:4/5}
+.figure-hot canvas{position:absolute;inset:0;width:100%;height:100%}
+.hot{position:absolute;transform:translate(-50%,-50%);width:34px;height:34px;border:none;padding:0;background:none;cursor:pointer;display:grid;place-items:center}
+.hot::before{content:"";position:absolute;inset:6px;border-radius:0 50% 0 50%;background:var(--accent);opacity:.9;box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 60%,transparent);animation:hotpulse 2.8s ease-out infinite}
+.hot span{position:relative;font-family:var(--font-ui);font-size:.72rem;font-weight:600;color:#141a10;text-shadow:none}
+.hot[aria-pressed="true"]::before{background:#fff4d0;transform:scale(1.2);border-radius:50% 0 50% 0}
+@keyframes hotpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent)}70%{box-shadow:0 0 0 14px transparent}100%{box-shadow:0 0 0 0 transparent}}
+html.calm .hot::before{animation:none}
+.slider-row{display:grid;gap:.5rem}
+.slider-row output{font-family:var(--font-display);font-size:var(--step-3);color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+.stage-steps{display:flex;justify-content:space-between;font-family:var(--font-ui);font-size:.78rem;color:var(--muted);gap:.4rem;flex-wrap:wrap}
+.species-list{list-style:none;margin:0;padding:0;display:grid;gap:.8rem}
+.species-list li{display:grid;gap:.15rem;padding-bottom:.8rem;border-bottom:1px solid var(--line)}
+.species-list b{font-family:var(--font-display);font-weight:400;font-size:1.25rem}
+.species-list i{color:var(--muted);font-size:.9rem}
+.species-list span{font-size:.95rem}
+.word{font-family:var(--font-display);font-style:italic;font-size:var(--step-3);color:var(--accent);line-height:1.05}
+.pullquote{font-family:var(--font-display);font-style:italic;font-size:var(--step-2);line-height:1.3;max-width:28em;border-left:2px solid var(--accent);padding-left:1.2rem}
+.ev-row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+
+.menu{max-height:calc(100vh - 5rem);overflow:auto}
 </style>
 
 </head>
@@ -366,11 +407,20 @@ html.calm .breath-orb{transform:scale(.9)}
 
 <nav class="menu" id="menu" hidden aria-label="Sections of the tree">
   <a href="#sky"><span class="h">+40 m</span><span><b>Open sky</b><span class="d">Pause, promise, step outside</span></span></a>
-  <a href="#canopy"><span class="h">+30 m</span><span><b>Canopy</b><span class="d">Light, the leaf under the microscope, seasons</span></span></a>
+  <a href="#canopy"><span class="h">+30 m</span><span><b>Canopy</b><span class="d">Light and the leaf under the microscope</span></span></a>
+  <a href="#birds"><span class="h">+27 m</span><span><b>Life in the crown</b><span class="d">The birds of the woodland storeys</span></span></a>
+  <a href="#signals"><span class="h">+25 m</span><span><b>Messages on the wind</b><span class="d">How trees signal to plants and animals</span></span></a>
+  <a href="#weather"><span class="h">+23 m</span><span><b>Rivers in the sky</b><span class="d">Forests that make rain</span></span></a>
   <a href="#journal"><span class="h">+20 m</span><span><b>Tree Journal</b><span class="d">Your encounters and tree friends</span></span></a>
-  <a href="#branches"><span class="h">+18 m</span><span><b>Branches</b><span class="d">Species, forests, climate, culture</span></span></a>
+  <a href="#branches"><span class="h">+18 m</span><span><b>Branches</b><span class="d">Species and forests</span></span></a>
+  <a href="#oakworld"><span class="h">+14 m</span><span><b>A world on one tree</b><span class="d">2,300 species on Britain's oaks</span></span></a>
+  <a href="#people"><span class="h">+10 m</span><span><b>Trees and us</b><span class="d">What trees do to a human body</span></span></a>
   <a href="#trunk"><span class="h">+7 m</span><span><b>Trunk</b><span class="d">Anatomy and growth rings</span></span></a>
+  <a href="#read"><span class="h">+3 m</span><span><b>Reading a tree</b><span class="d">What scars, shapes and lichens tell you</span></span></a>
+  <a href="#decay"><span class="h">+1 m</span><span><b>The long death</b><span class="d">How dead trees feed the forest</span></span></a>
   <a href="#roots"><span class="h">0 m</span><span><b>Roots</b><span class="d">Root tip microscope, the fungal network</span></span></a>
+  <a href="#fungi"><span class="h">−1 m</span><span><b>The fungal kingdom</b><span class="d">Mycelium, decomposers, truffles</span></span></a>
+  <a href="#salmon"><span class="h">−2 m</span><span><b>Forest, river and sea</b><span class="d">Salmon forests and oyster forests</span></span></a>
 </nav>
 
 <nav class="gauge" id="gauge" aria-label="Height in the tree">
@@ -500,6 +550,54 @@ html.calm .breath-orb{transform:scale(.9)}
       <div class="season-wrap rise"><canvas id="season-canvas" role="img" aria-label="An oak through the seasons"></canvas></div>
     </div>
 
+
+    <!-- ===== Life in the crown: birds ===== -->
+    <section id="birds" class="chapter" aria-labelledby="birds-h">
+      <div class="section-head rise">
+        <p class="eyebrow">Life in the crown · birds</p>
+        <h2 class="display" id="birds-h">A wood is built in <i>storeys</i>.</h2>
+        <p class="lede">From the woodland floor to the top of the canopy, each layer of a tree is a different place to live. Birds divide it between them: some glean the outer twigs, some climb the bark, some need a hole that took a century to form.</p>
+      </div>
+      <div class="picker" id="bird-picker" role="group" aria-label="Choose a bird"></div>
+      <div class="stage" id="bird-stage"><canvas id="bird-canvas" role="img" aria-label="Animated cross-section of an oak wood. Birds live at different heights: tits in the canopy, a woodpecker drumming, a nuthatch walking down a trunk, a treecreeper spiralling up, an owl in a hollow and a jay burying acorns."></canvas></div>
+      <div class="duo" id="bird-info" aria-live="polite"></div>
+      <div class="gcards">
+        <article class="gcard rise"><span class="big">5,000–20,000</span><h3>Clark's nutcracker</h3><p>In the mountains of western North America, a single nutcracker makes thousands of separate seed caches every autumn and remembers where most of them are. The ones it forgets grow. Whitebark pine cones do not open by themselves, so the tree depends on this bird to plant its seeds.</p></article>
+        <article class="gcard rise"><span class="big">1,274</span><h3>Fig trees and hornbills</h3><p>A global review counted 1,274 species of birds and mammals known to eat figs. Because fig trees fruit at different times through the year, they feed animals when little else is ripe. Hornbills swallow the fruit and carry the seeds far across the forest.</p></article>
+        <article class="gcard rise"><span class="big">30–40 m</span><h3>Harpy eagle</h3><p>One of the largest eagles on Earth nests in the crowns of the tallest rainforest trees, often kapok or Brazil nut, building great platforms of sticks, often 30 to 40 metres above the ground. Where the giant emergent trees are felled, the eagles cannot breed.</p></article>
+      </div>
+    </section>
+
+    <!-- ===== Messages on the wind ===== -->
+    <section id="signals" class="chapter" aria-labelledby="signals-h">
+      <div class="section-head rise">
+        <p class="eyebrow">Messages on the wind</p>
+        <h2 class="display" id="signals-h">Trees are always <i>saying</i> something.</h2>
+        <p class="lede">Not in words. In scent, colour, chemistry, electricity and even sound. Some messages are meant for other trees, some for animals, and some are simply overheard. Choose a message and watch who receives it.</p>
+      </div>
+      <div class="picker" id="sig-picker" role="group" aria-label="Choose a kind of message"></div>
+      <div class="stage" id="sig-stage"><canvas id="sig-canvas" role="img" aria-label="Animated scene of three trees showing how a tree's signals travel to neighbours and animals."></canvas></div>
+      <div class="duo" id="sig-info" aria-live="polite"></div>
+    </section>
+
+    <!-- ===== Trees make weather ===== -->
+    <section id="weather" class="chapter" aria-labelledby="weather-h">
+      <div class="section-head rise">
+        <p class="eyebrow">Rivers in the sky</p>
+        <h2 class="display" id="weather-h">Forests make their own <i>rain</i>.</h2>
+      </div>
+      <div class="stage wide-m" id="wx-stage"><canvas id="wx-canvas" role="img" aria-label="Animated diagram: moist air from the ocean rains on a forest, the trees breathe the water back into the air, and it rains again further inland, three times over."></canvas></div>
+      <div class="cols">
+        <div class="prose rise">
+          <p class="dropcap">Every leaf loses water through its stomata as it takes in carbon dioxide. Across a whole forest this adds up to a river flowing upward. A single large Amazon tree can release around 1,000 litres of water into the air in a day.</p>
+          <p>The Amazon as a whole is estimated to send about 20 billion tonnes of water into the atmosphere each day, more than the 17 billion tonnes the Amazon River pours into the Atlantic. Winds carry this "flying river" inland, where it falls as rain, is breathed out again, and falls again further on. Rain that began over the Atlantic can be recycled by trees several times before it reaches the Andes, and some of it waters farms far to the south.</p>
+        </div>
+        <div class="prose rise">
+          <p>Trees seed clouds too. Pines, oaks and eucalyptus give off scented compounds such as isoprene and terpenes. In sunlight these react to form tiny particles that water vapour can condense on. The blue haze over the Blue Ridge and Great Smoky Mountains is partly this: the forest's own breath, made visible.</p>
+          <p class="note">How strongly forests pull moist air inland is still argued. One idea, the "biotic pump", proposes that condensation over forests actively draws ocean air towards them. It is intriguing and contested. That forests recycle rainfall, and that clearing them dries regions downwind, is well supported.</p>
+        </div>
+      </div>
+    </section>
     <!-- ===== Journal ===== -->
     <section id="journal" class="journal veil" aria-labelledby="journal-title">
       <div class="j-top">
@@ -605,7 +703,9 @@ html.calm .breath-orb{transform:scale(.9)}
       <div class="hero-actions" role="list" aria-label="The four limbs">
         <a role="listitem" class="btn quiet" href="#species">Species</a>
         <a role="listitem" class="btn quiet" href="#forests">Forests</a>
+        <a role="listitem" class="btn quiet" href="#oakworld">A world on one tree</a>
         <a role="listitem" class="btn quiet" href="#climate">Climate</a>
+        <a role="listitem" class="btn quiet" href="#people">Trees and us</a>
         <a role="listitem" class="btn quiet" href="#culture">Culture and myth</a>
       </div>
     </div>
@@ -634,9 +734,22 @@ html.calm .breath-orb{transform:scale(.9)}
       <p class="note">Forest-area shares are from the UN FAO's Global Forest Resources Assessment 2020; subtropical forests make up the remaining 11%.</p>
     </section>
 
+
+    <!-- ===== Oak census ===== -->
+    <section id="oakworld" class="limb-section" aria-labelledby="oakworld-h">
+      <div class="section-head rise">
+        <p class="eyebrow">Limb three · A whole world on one tree</p>
+        <h2 class="h2" id="oakworld-h">2,300 species live with Britain's oaks</h2>
+        <p class="muted">A study of Britain's two native oaks listed 2,300 species of birds, mammals, insects and other invertebrates, lichens, mosses and fungi that use them. 326 of those are found only on oak. Lose the oaks and they go too. Tap a part of the tree to meet some of them.</p>
+      </div>
+      <div class="duo">
+        <div class="figure-hot rise" id="oak-fig"><canvas id="oak-canvas" role="img" aria-label="Engraving of an oak with its roots, marked with points for the crown, acorns, galls, bark, a hollow, dead wood, roots and leaf litter."></canvas></div>
+        <div class="card" id="oak-info" aria-live="polite"></div>
+      </div>
+    </section>
     <section id="climate" class="limb-section" aria-labelledby="climate-h">
       <div class="section-head rise">
-        <p class="eyebrow">Limb three · Trees and climate</p>
+        <p class="eyebrow">Limb four · Trees and climate</p>
         <h2 class="h2" id="climate-h">Wood is stored air</h2>
       </div>
       <div class="cols">
@@ -661,9 +774,41 @@ html.calm .breath-orb{transform:scale(.9)}
       </div>
     </section>
 
+
+    <!-- ===== Trees and people ===== -->
+    <section id="people" class="limb-section" aria-labelledby="people-h">
+      <div class="section-head rise">
+        <p class="eyebrow">Limb five · How trees speak to us</p>
+        <h2 class="h2" id="people-h">What trees do to a human body</h2>
+        <p class="muted">We evolved among trees, and our bodies still respond to them. Some of the evidence is strong, some is early, and some is only a correlation. Here it is, sorted honestly.</p>
+      </div>
+      <div class="gcards">
+        <article class="gcard rise"><span class="badge ev-strong">Controlled comparison</span><span class="big">1984</span><h3>A window onto trees</h3><p>Roger Ulrich compared patients recovering from the same gallbladder surgery in one Pennsylvania hospital. Those whose window looked out on trees went home sooner, needed fewer strong painkillers, and drew fewer negative comments in their nurses' notes than matched patients facing a brick wall.</p></article>
+        <article class="gcard rise"><span class="badge ev-mixed">Large correlation</span><span class="big">10 trees</span><h3>Street trees in Toronto</h3><p>Comparing health surveys with a map of 530,000 street trees, researchers found that ten more trees on a city block was linked to people rating their own health as highly as people seven years younger, or $10,000 richer. It shows a link, not proof that the trees caused it.</p></article>
+        <article class="gcard rise"><span class="badge ev-mixed">Natural experiment</span><span class="big">100 million</span><h3>When the ash trees died</h3><p>The emerald ash borer killed about 100 million ash trees across the eastern United States. In the 15 states studied, counties hit by the beetle saw about 15,000 more deaths from heart disease and 6,000 more from lower respiratory disease than expected. An association, but a striking one.</p></article>
+        <article class="gcard rise"><span class="badge ev-mixed">Small trials</span><span class="big">1982</span><h3>Forest bathing</h3><p>Japan's forestry agency coined <i>shinrin-yoku</i>, forest bathing: simply being among trees, slowly, with all your senses. Short trials have found lower stress hormones, pulse and blood pressure after forest walks compared with city walks. Many studies are small, so the size of the benefit is still uncertain.</p></article>
+      </div>
+      <div class="duo">
+        <div class="veil slider-row rise">
+          <h3 class="h3" style="font-size:1.6rem">Your street</h3>
+          <label for="street-trees" class="small muted">More trees on your block: <b id="street-n">10</b></label>
+          <input type="range" id="street-trees" min="0" max="20" step="1" value="10">
+          <p class="small muted">In the Toronto study, people with this many more trees on their block rated their health, on average, like people who were</p>
+          <output id="street-out" for="street-trees">7 years younger</output>
+          <p class="small muted">A rough illustration of the study's average effect, scaled in a straight line. Real effects vary, and the link was strongest for trees on the street itself.</p>
+        </div>
+        <div class="prose rise">
+          <h3 class="h3">The senses trees speak to</h3>
+          <p><b>Smell.</b> Pine and cedar woods smell the way they do because of terpenes like pinene. The scent after rain, petrichor, comes partly from oils plants release in dry weather.</p>
+          <p><b>Sound.</b> English once had a word for the sound of wind in the trees: <span class="fell">psithurism</span>. Each species sounds different. Aspen leaves on flat stalks shiver at the faintest breeze; pines hiss; oaks roar.</p>
+          <p><b>Temperature.</b> Under a canopy on a hot day the air is cooler and moister, partly from shade and partly because the leaves are evaporating water like sweat.</p>
+          <p class="note">An honest balance: tree pollen causes hay fever for many people, and some trees, like oaks and poplars, release isoprene, which can add to ozone smog where traffic pollution is heavy. Choosing the right tree for a street matters.</p>
+        </div>
+      </div>
+    </section>
     <section id="culture" class="limb-section" aria-labelledby="culture-h">
       <div class="section-head rise">
-        <p class="eyebrow">Limb four · Trees in human culture</p>
+        <p class="eyebrow">Limb six · Trees in human culture</p>
         <h2 class="h2" id="culture-h">The oldest companions we have</h2>
         <p class="muted">Many cultures have imagined the world itself as a tree: roots in the underworld, trunk through the living world, crown in the heavens. It is the same shape this page is built on.</p>
       </div>
@@ -755,6 +900,36 @@ html.calm .breath-orb{transform:scale(.9)}
         <div class="era-list" id="era-list" role="group" aria-label="Jump to an era"></div>
       </div>
     </div>
+
+    <!-- ===== Reading a tree ===== -->
+    <section id="read" class="chapter" aria-labelledby="read-h">
+      <div class="section-head rise">
+        <p class="eyebrow">Reading a tree</p>
+        <h2 class="display" id="read-h">Every old tree is <i>telling</i> you its story.</h2>
+        <p class="lede">Its shape, its scars, the things growing on it: all of it is information, if you know how to look. Tap the marks on this veteran oak.</p>
+      </div>
+      <div class="duo">
+        <div class="figure-hot rise" id="read-fig"><canvas id="read-canvas" role="img" aria-label="Engraving of a veteran oak leaning away from the wind, with a hollow, bracket fungus, a burr, shoots on the trunk, a healed wound, lichens, moss, a woodpecker hole and a flared base."></canvas></div>
+        <div class="card" id="read-info" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ===== The long death ===== -->
+    <section id="decay" class="chapter" aria-labelledby="decay-h">
+      <div class="section-head rise">
+        <p class="eyebrow">The long death</p>
+        <h2 class="display" id="decay-h">A dead tree is more alive than a living one.</h2>
+        <p class="lede">An old saying holds that an oak spends three hundred years growing, three hundred living and three hundred dying. That last stage feeds more life than the first two. Slide through what happens after a great tree begins to die.</p>
+      </div>
+      <div class="stage tall" id="decay-stage"><canvas id="decay-canvas" role="img" aria-label="A tree shown at the selected stage of decay."></canvas></div>
+      <div class="slider-row">
+        <label for="decay-range" class="small muted">Stage of decay</label>
+        <input type="range" id="decay-range" min="0" max="4" step="1" value="0" aria-describedby="decay-title">
+        <div class="stage-steps" aria-hidden="true"><span>Veteran</span><span>Hollowing</span><span>Standing dead</span><span>Fallen log</span><span>Nurse log</span></div>
+      </div>
+      <div class="duo" id="decay-info" aria-live="polite"></div>
+      <p class="note">Wood-dwelling beetles alone make up a large share of forest life: about 1,340 of the roughly 8,000 beetle species in Central Europe, and around a fifth of all beetle species in Switzerland, live in or on wood. Half of Germany's wood-living beetles are on its red list of threatened species, because tidy forests remove the dead wood they need.</p>
+    </section>
   </div>
 </section>
 
@@ -819,6 +994,22 @@ html.calm .breath-orb{transform:scale(.9)}
       <div class="ex-info" id="ex-info" aria-live="polite"></div>
     </section>
 
+
+    <!-- ===== Fungal kingdom ===== -->
+    <section id="fungi" class="chapter" aria-labelledby="fungi-h">
+      <div class="section-head rise">
+        <p class="eyebrow">The fungal kingdom</p>
+        <h2 class="display" id="fungi-h">The mushroom is only the <i>fruit</i>.</h2>
+        <p class="lede">The body of a fungus is the mycelium, a web of threads spread through soil and wood. A mushroom is just the part that pushes up to release spores. Fungi are why a forest floor is not buried under a mountain of dead wood.</p>
+      </div>
+      <div class="gcards">
+        <article class="gcard rise"><span class="big">965 ha</span><h3>The humongous fungus</h3><p>In Oregon's Malheur National Forest, a single honey fungus, <i>Armillaria ostoyae</i>, spreads beneath about 965 hectares of forest. It is estimated to be at least 2,400 years old and possibly over 8,000. It is a parasite, slowly killing the conifers it lives on.</p></article>
+        <article class="gcard rise"><span class="big">Lignin</span><h3>The wood breakers</h3><p>Wood is made of cellulose glued with lignin, one of the toughest natural materials. White-rot fungi are among the very few organisms on Earth that can break lignin down completely. Without them, carbon locked in dead wood would barely return to the cycle.</p></article>
+        <article class="gcard rise"><span class="big">Scent</span><h3>Truffles and their animals</h3><p>Truffles fruit underground, where wind cannot spread their spores. Instead they release a strong smell when ripe. Squirrels, voles, wild boar and deer dig them up, eat them, and spread the spores in their droppings, often near the roots of new host trees.</p></article>
+        <article class="gcard rise"><span class="big">Lichen</span><h3>Two lives in one</h3><p>A lichen is a fungus living with an alga or a cyanobacterium, which makes food from light. Together they grow on bare bark where neither could live alone. Some, like lungwort, take decades to establish and only grow on old trees in clean air.</p></article>
+      </div>
+    </section>
+
     <div class="cols">
       <div class="prose rise">
         <h3 class="h3">Mother trees</h3>
@@ -832,6 +1023,26 @@ html.calm .breath-orb{transform:scale(.9)}
       </div>
     </div>
 
+    <!-- ===== Salmon forest ===== -->
+    <section id="salmon" class="chapter" aria-labelledby="salmon-h">
+      <div class="section-head rise">
+        <p class="eyebrow">Forest, river and sea</p>
+        <h2 class="display" id="salmon-h">Some forests are made of <i>salmon</i>.</h2>
+        <p class="lede">Along the rivers of Alaska and British Columbia, salmon swim in from the ocean to spawn and die. Bears catch them and carry them into the trees. What the bears leave behind feeds the forest.</p>
+      </div>
+      <div class="stage" id="salmon-stage"><canvas id="salmon-canvas" role="img" aria-label="Animated cycle: salmon swim up a river from the sea, a bear carries one into the forest, nitrogen from the carcass rises into a spruce, and the trees shade the stream and drop insects and logs into it."></canvas></div>
+      <div class="cols">
+        <div class="prose rise">
+          <p class="dropcap">On Chichagof Island in southeast Alaska, researchers traced nitrogen with a chemical fingerprint found only in the ocean. Sitka spruce growing beside salmon streams drew about a quarter of the nitrogen in their needles from salmon. Near spawning sites, the spruce grew more than three times as fast as spruce beside streams without salmon.</p>
+          <p>The trees return the favour. Their shade keeps the water cool enough for young salmon. Insects fall from the branches into the stream as food. Fallen logs make the pools and hiding places that young fish need.</p>
+        </div>
+        <div class="prose rise">
+          <h3 class="h3">The forest is the lover of the sea</h3>
+          <p>In the late 1980s, Shigeatsu Hatakeyama, an oyster farmer in Kesennuma Bay in Japan, watched his oysters fail. He came to believe the sea's health depended on the forests upstream, which filter the rain and send nutrients down the rivers to the bay. So he and other fishers began planting trees in the mountains.</p>
+          <p>Their movement is called <span class="fell">Mori wa Umi no Koibito</span>: the forest is the lover of the sea.</p>
+        </div>
+      </div>
+    </section>
     <section aria-labelledby="honest-h" style="display:grid;gap:1.6rem">
       <div class="section-head rise">
         <p class="eyebrow">Being honest about the evidence</p>
@@ -870,6 +1081,21 @@ html.calm .breath-orb{transform:scale(.9)}
         <li>Crowther, T. W. et al. (2015). Mapping tree density at a global scale. <a href="https://doi.org/10.1038/nature14967" target="_blank" rel="noopener">Nature 525</a>.</li>
         <li>Harris, N. L. et al. (2021). Global maps of twenty-first century forest carbon fluxes. <a href="https://doi.org/10.1038/s41558-020-00976-6" target="_blank" rel="noopener">Nature Climate Change 11</a>.</li>
         <li>Cazzolla Gatti, R. et al. (2022). The number of tree species on Earth. <a href="https://doi.org/10.1073/pnas.2115329119" target="_blank" rel="noopener">PNAS 119</a>.</li>
+        <li>Mitchell, R. J. et al. (2019). Collapsing foundations: the ecology of the British oak. Summary at <a href="https://www.forestresearch.gov.uk/research/ecological-implications-of-oak-decline-in-great-britain" target="_blank" rel="noopener">Forest Research</a>.</li>
+        <li>Shanahan, M. et al. (2001). Fig-eating by vertebrate frugivores: a global review. <a href="https://www.cambridge.org/core/journals/biological-reviews/article/abs/figeating-by-vertebrate-frugivores-a-global-review/551140ACF03E1E9572BA5A1DD0B6D72D" target="_blank" rel="noopener">Biological Reviews 76</a>.</li>
+        <li>Clark's nutcracker caching: <a href="https://www.cbc.ca/news/canada/edmonton/clark-s-nutcracker-caches-up-to-20k-seeds-per-year-and-remembers-where-1.3389299" target="_blank" rel="noopener">CBC News</a>.</li>
+        <li>Great tits at Wytham Woods: <a href="https://theconversation.com/the-great-tits-in-this-oxford-wood-are-adapting-their-breeding-times-as-climate-changes-heres-how-224172" target="_blank" rel="noopener">The Conversation, 2024</a>.</li>
+        <li>Turlings, T. C. J. et al. (1990). Exploitation of herbivore-induced plant odors by host-seeking parasitic wasps. <a href="https://doi.org/10.1126/science.250.4985.1251" target="_blank" rel="noopener">Science 250</a>.</li>
+        <li>Toyota, M. et al. (2018). Glutamate triggers long-distance, calcium-based plant defense signaling. <a href="https://doi.org/10.1126/science.aat7744" target="_blank" rel="noopener">Science 361</a>.</li>
+        <li>Khait, I. et al. (2023). Sounds emitted by plants under stress are airborne and informative. <a href="https://doi.org/10.1016/j.cell.2023.03.009" target="_blank" rel="noopener">Cell 186</a>.</li>
+        <li>Amazon "flying rivers": <a href="https://ideas.ted.com/this-airborne-river-may-be-the-largest-river-on-earth/" target="_blank" rel="noopener">TED Ideas</a>, drawing on the work of Antonio Nobre.</li>
+        <li>Ulrich, R. S. (1984). View through a window may influence recovery from surgery. <a href="https://doi.org/10.1126/science.6143402" target="_blank" rel="noopener">Science 224</a>.</li>
+        <li>Kardan, O. et al. (2015). Neighborhood greenspace and health in a large urban center. <a href="https://doi.org/10.1038/srep11610" target="_blank" rel="noopener">Scientific Reports 5</a>.</li>
+        <li>Donovan, G. H. et al. (2013). The relationship between trees and human health: evidence from the spread of the emerald ash borer. <a href="https://doi.org/10.1016/j.amepre.2012.09.066" target="_blank" rel="noopener">American Journal of Preventive Medicine 44</a>.</li>
+        <li>Wood-living beetles in Central Europe: <a href="https://www.waldwissen.net/en/forest-ecology/forest-fauna/insects-invertebrates/wood-living-beetles" target="_blank" rel="noopener">waldwissen.net</a>.</li>
+        <li>The humongous fungus: <a href="https://www.guinnessworldrecords.com/world-records/66481-largest-fungi" target="_blank" rel="noopener">Guinness World Records</a>.</li>
+        <li>Helfield, J. M. &amp; Naiman, R. J. (2001). Effects of salmon-derived nitrogen on riparian forest growth. <a href="https://cedar.wwu.edu/esci_facpubs/19" target="_blank" rel="noopener">Ecology 82</a>.</li>
+        <li>Shigeatsu Hatakeyama and Mori wa Umi no Koibito: <a href="https://ourworld.unu.edu/en/from-mountain-to-sea-a-vision-for-the-rebuilding-of-tohoku" target="_blank" rel="noopener">Our World, United Nations University</a>.</li>
         <li>Simard, S. (2021). <i>Finding the Mother Tree</i>. A first-hand account of the research, written for general readers.</li>
       </ol>
     </section>
@@ -2439,6 +2665,585 @@ const fmtLong = s => parseDate(s).toLocaleDateString('en-GB', { day: 'numeric', 
 })();
 function renderVow() { if (window.renderVow) window.renderVow(); }
 
+
+
+/* ======================================================================
+   NEW CHAPTERS
+   ====================================================================== */
+const EVB = { strong: ['ev-strong', 'Well supported'], mixed: ['ev-mixed', 'Shown in some studies'], debated: ['ev-debated', 'Debated'] };
+const badge = (k, label) => `<span class="badge ${EVB[k][0]}">${esc(label || EVB[k][1])}</span>`;
+
+/* ink drawing shared by the engraved figures */
+function inkDraw(ctx, k, segs, tips, o, R) {
+  const INK = o.ink || '#ebe2c8';
+  for (const s of segs) {
+    const dx = s.x2 - s.x1, dy = s.y2 - s.y1, L = Math.hypot(dx, dy) || 1, nx = -dy / L, ny = dx / L, wm = (s.w1 + s.w2) / 2;
+    if (wm * k < 2.4) { ctx.strokeStyle = s.dead ? 'rgba(235,226,200,.55)' : INK; ctx.lineCap = 'round'; ctx.lineWidth = Math.max(.6, wm * k); ctx.beginPath(); ctx.moveTo(s.x1 * k, s.y1 * k); ctx.lineTo(s.x2 * k, s.y2 * k); ctx.stroke(); continue; }
+    const A = [[(s.x1 + nx * s.w1 / 2) * k, (s.y1 + ny * s.w1 / 2) * k], [(s.x2 + nx * s.w2 / 2) * k, (s.y2 + ny * s.w2 / 2) * k]];
+    const B = [[(s.x1 - nx * s.w1 / 2) * k, (s.y1 - ny * s.w1 / 2) * k], [(s.x2 - nx * s.w2 / 2) * k, (s.y2 - ny * s.w2 / 2) * k]];
+    ctx.fillStyle = o.fill || '#16140e'; ctx.beginPath(); ctx.moveTo(...A[0]); ctx.lineTo(...A[1]); ctx.lineTo(...B[1]); ctx.lineTo(...B[0]); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = INK; ctx.lineWidth = 1.1; ctx.beginPath(); ctx.moveTo(...A[0]); ctx.lineTo(...A[1]); ctx.moveTo(...B[0]); ctx.lineTo(...B[1]); ctx.stroke();
+    const n = Math.max(2, L / 1.3 | 0), ux = dx / L, uy = dy / L;
+    ctx.lineWidth = .7; ctx.strokeStyle = 'rgba(235,226,200,.4)';
+    for (let i = 0; i < n; i++) { const t = (i + .5) / n, cx = s.x1 + dx * t, cy = s.y1 + dy * t, ww = (s.w1 + (s.w2 - s.w1) * t) / 2; ctx.beginPath(); ctx.moveTo((cx - nx * ww * .3) * k, (cy - ny * ww * .3) * k); ctx.lineTo((cx - nx * ww * .9 + ux * ww * .5) * k, (cy - ny * ww * .9 + uy * ww * .5) * k); ctx.stroke(); }
+  }
+  if (!o.leafN) return;
+  for (const tp of tips) {
+    for (let i = 0; i < o.leafN; i++) {
+      const a = R() * TAU, r = Math.sqrt(R()) * o.leafR, x = tp.x + Math.cos(a) * r, y = tp.y + Math.sin(a) * r * .85 - o.leafR * .2;
+      if ((Math.cos(a) + Math.sin(a)) <= 0 && R() < .45) continue;
+      const la = R() * TAU, l = .7 + R() * .9;
+      ctx.strokeStyle = o.leafCol ? o.leafCol(R) : `rgba(235,226,200,${.5 + R() * .45})`; ctx.lineWidth = .8;
+      ctx.beginPath(); ctx.moveTo((x - Math.cos(la) * l) * k, (y - Math.sin(la) * l) * k); ctx.quadraticCurveTo((x + .3) * k, (y - .4) * k, (x + Math.cos(la) * l) * k, (y + Math.sin(la) * l) * k); ctx.stroke();
+    }
+  }
+}
+function hotFigure(figSel, canvasSel, infoSel, spots, render, drawFig) {
+  const fig = $(figSel), cv = $(canvasSel), info = $(infoSel); if (!fig || !cv) return;
+  let sel = 0;
+  spots.forEach((s, i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'hot'; b.style.left = s.x + '%'; b.style.top = (s.u ? s.y / 1.25 : s.y) + '%';
+    b.setAttribute('aria-label', s.title); b.setAttribute('aria-pressed', 'false'); b.innerHTML = `<span>${i + 1}</span>`;
+    b.addEventListener('click', () => pick(i)); fig.appendChild(b);
+  });
+  function pick(i) { sel = i; $$('.hot', fig).forEach((b, j) => b.setAttribute('aria-pressed', String(j === i))); info.innerHTML = render(spots[i], i); }
+  let drawn = false;
+  const go = () => { drawn = true; drawFig(cv); };
+  onScreen(fig, () => { if (!drawn) go(); }, true);
+  new ResizeObserver(() => { if (drawn) drawFig(cv); }).observe(cv);
+  pick(0);
+}
+
+/* ================= birds: the woodland storeys ================= */
+const BIRD_LOOK = {
+  greatTit: { body: '#a9b25a', belly: '#e6d43c', head: '#141414', cheek: '#f4f2ea', wing: '#5c7570', beak: '#222', stripe: true, s: 1 },
+  blueTit: { body: '#97ac5c', belly: '#e9d84a', head: '#3b80c6', cheek: '#f4f2ea', wing: '#4f86c4', beak: '#222', s: .85 },
+  jay: { body: '#c39c86', belly: '#dcc3b4', head: '#d6c4b6', wing: '#2a2a2a', patch: '#4a86d6', beak: '#2a2a2a', s: 1.7 },
+  woodpecker: { body: '#1b1b1b', belly: '#ece6dc', head: '#1b1b1b', cheek: '#ece6dc', wing: '#1b1b1b', patch: '#f2efe8', vent: '#c4232c', beak: '#3a3a3a', s: 1.35 },
+  nuthatch: { body: '#6f88a4', belly: '#d9a066', head: '#6f88a4', mask: true, wing: '#5f7894', beak: '#2a2a2a', s: 1.05 },
+  treecreeper: { body: '#7a5f40', belly: '#efeae0', head: '#7a5f40', wing: '#8a6c48', beak: '#3a2a1a', curved: true, s: .95 },
+  flycatcher: { body: '#1a1a1a', belly: '#f2f0ea', head: '#1a1a1a', wing: '#1a1a1a', patch: '#f2f0ea', beak: '#1a1a1a', s: 1 }
+};
+function drawBird(ctx, look, x, y, s, ang, flip, flap) {
+  const L = BIRD_LOOK[look], S = s * L.s;
+  ctx.save(); ctx.translate(x, y); ctx.rotate(ang); if (flip) ctx.scale(-1, 1);
+  // tail
+  ctx.fillStyle = L.wing; ctx.beginPath(); ctx.moveTo(-1.2 * S, -.2 * S); ctx.lineTo(-2.7 * S, -.5 * S); ctx.lineTo(-2.7 * S, .35 * S); ctx.lineTo(-1.2 * S, .3 * S); ctx.fill();
+  // body
+  ctx.fillStyle = L.body; ctx.beginPath(); ctx.ellipse(0, 0, 1.6 * S, 1 * S, 0, 0, TAU); ctx.fill();
+  ctx.fillStyle = L.belly; ctx.beginPath(); ctx.ellipse(.25 * S, .35 * S, 1.2 * S, .62 * S, 0, 0, TAU); ctx.fill();
+  if (L.vent) { ctx.fillStyle = L.vent; ctx.beginPath(); ctx.ellipse(-1 * S, .5 * S, .4 * S, .3 * S, 0, 0, TAU); ctx.fill(); }
+  if (L.stripe) { ctx.fillStyle = '#141414'; ctx.fillRect(.5 * S, -.1 * S, .3 * S, 1 * S); }
+  // wing
+  if (flap != null) {
+    const f = Math.sin(flap) * 1.6 * S;
+    ctx.fillStyle = L.wing; ctx.beginPath(); ctx.moveTo(-.4 * S, -.3 * S); ctx.quadraticCurveTo(-.1 * S, -1.4 * S - f, .9 * S, -.3 * S); ctx.fill();
+  } else { ctx.fillStyle = L.wing; ctx.beginPath(); ctx.ellipse(-.3 * S, -.15 * S, 1.05 * S, .55 * S, -.15, 0, TAU); ctx.fill(); if (L.patch) { ctx.fillStyle = L.patch; ctx.fillRect(-.2 * S, -.35 * S, .5 * S, .25 * S); } }
+  // head
+  ctx.fillStyle = L.head; ctx.beginPath(); ctx.arc(1.45 * S, -.55 * S, .72 * S, 0, TAU); ctx.fill();
+  if (L.cheek) { ctx.fillStyle = L.cheek; ctx.beginPath(); ctx.ellipse(1.5 * S, -.35 * S, .4 * S, .3 * S, 0, 0, TAU); ctx.fill(); }
+  if (look === 'blueTit') { ctx.fillStyle = '#f4f2ea'; ctx.fillRect(1 * S, -.75 * S, .9 * S, .18 * S); }
+  if (L.mask) { ctx.strokeStyle = '#141414'; ctx.lineWidth = .22 * S; ctx.beginPath(); ctx.moveTo(1 * S, -.6 * S); ctx.lineTo(2.1 * S, -.6 * S); ctx.stroke(); }
+  if (look === 'jay') { ctx.strokeStyle = '#141414'; ctx.lineWidth = .18 * S; ctx.beginPath(); ctx.moveTo(1.8 * S, -.3 * S); ctx.lineTo(1.4 * S, .05 * S); ctx.stroke(); }
+  if (look === 'woodpecker') { ctx.fillStyle = '#c4232c'; ctx.beginPath(); ctx.arc(1.05 * S, -.85 * S, .25 * S, 0, TAU); ctx.fill(); }
+  ctx.fillStyle = '#0a0a0a'; ctx.beginPath(); ctx.arc(1.7 * S, -.65 * S, .12 * S, 0, TAU); ctx.fill();
+  // beak
+  ctx.fillStyle = L.beak; ctx.beginPath();
+  if (L.curved) { ctx.moveTo(2.05 * S, -.6 * S); ctx.quadraticCurveTo(2.8 * S, -.55 * S, 2.95 * S, -.1 * S); ctx.lineTo(2.05 * S, -.45 * S); }
+  else { const bl = look === 'woodpecker' || look === 'nuthatch' ? 1.05 : .6; ctx.moveTo(2.05 * S, -.72 * S); ctx.lineTo((2.05 + bl) * S, -.55 * S); ctx.lineTo(2.05 * S, -.4 * S); }
+  ctx.fill();
+  ctx.restore();
+}
+(() => {
+  const stage = $('#bird-stage'), cv = $('#bird-canvas'), picker = $('#bird-picker'), info = $('#bird-info'); if (!cv) return;
+  const BIRDS = {
+    greatTit: { n: 'Great tit', l: 'Parus major', where: 'Canopy, nesting in tree holes', eats: 'Caterpillars in spring, seeds in winter', needs: 'Oak leaves at the right moment',
+      p: 'Great tits time their whole breeding season to an oak. Their chicks need a flood of caterpillars, mostly winter moth larvae feeding on newly opened oak leaves, and the peak lasts only a couple of weeks. At Wytham Woods near Oxford, where great tits have been studied since 1947, they now lay their eggs more than two weeks earlier than in the 1960s, keeping pace as warming springs bring the caterpillar peak forward.', ev: ['strong', 'Studied since 1947'] },
+    blueTit: { n: 'Blue tit', l: 'Cyanistes caeruleus', where: 'Outer twigs of the canopy', eats: 'Caterpillars, aphids, spiders', needs: 'Thin twigs and plenty of insects',
+      p: 'The canopy acrobat. Light enough to hang upside down from the thinnest twig tips, blue tits search the very outside of the crown where caterpillars feed on fresh leaves. Like great tits, they raise one large brood timed to the spring flush of oak leaves.', ev: ['strong'] },
+    jay: { n: 'Jay', l: 'Garrulus glandarius', where: 'Woodland canopy and edges', eats: 'Acorns, insects, eggs', needs: 'Oaks, and open ground to bury acorns in',
+      p: 'The oak\'s gardener. Each autumn a jay carries acorns away, several at a time in its throat, and buries them one by one, often hundreds of metres from the parent tree. A single bird can hide thousands in a season. It remembers many, but not all. The forgotten acorns are planted in exactly the right place: just under the soil, away from their parent\'s shade.', ev: ['strong'] },
+    woodpecker: { n: 'Great spotted woodpecker', l: 'Dendrocopos major', where: 'Trunks and big branches', eats: 'Insect larvae in wood, seeds, eggs', needs: 'Dead and decaying wood',
+      p: 'In late winter it drums rapid bursts on a dead, resonant branch to claim territory, the woodland\'s loudest message. Most years it carves a fresh nest hole. The old ones become homes for other birds and for bats, so one woodpecker can house a whole neighbourhood over the years.', ev: ['strong'] },
+    nuthatch: { n: 'Nuthatch', l: 'Sitta europaea', where: 'Trunks and large limbs', eats: 'Insects, nuts and seeds', needs: 'Old holes in mature trees',
+      p: 'The only British bird that regularly walks down tree trunks head first, finding insects that birds climbing upwards miss. It nests in an old woodpecker hole and plasters the entrance with mud until only it can squeeze through.', ev: ['strong'] },
+    treecreeper: { n: 'Treecreeper', l: 'Certhia familiaris', where: 'Bark of trunks', eats: 'Tiny insects and spiders in bark cracks', needs: 'Rough bark, loose flakes to nest behind',
+      p: 'A mouse-like bird that spirals up a trunk, probing crevices with its fine curved bill and propping itself on stiff tail feathers. At the top it flutters down to the foot of the next tree and starts again. It often nests behind a loose flap of bark.', ev: ['strong'] },
+    owl: { n: 'Tawny owl', l: 'Strix aluco', where: 'Hollows in old trees', eats: 'Mice, voles, small birds', needs: 'Veteran trees with cavities',
+      p: 'Tawny owls nest in the hollows that only old trees have, and a pair may hold the same patch of wood for life. A hollow big enough for an owl can take well over a century to form, which is why felling veteran trees removes homes that cannot quickly be replaced.', ev: ['strong'] },
+    flycatcher: { n: 'Pied flycatcher', l: 'Ficedula hypoleuca', where: 'Holes in oak woods; perches below the canopy', eats: 'Flying insects', needs: 'Old oak woods with nest holes',
+      p: 'It spends the winter in West Africa and flies thousands of kilometres every spring to nest in the old oak woods of western Britain. From a perch it darts out to snatch an insect from the air and returns to the same twig.', ev: ['strong'] }
+  };
+  let sel = 'jay', G = null, pos = {};
+  Object.entries(BIRDS).forEach(([id, b]) => { const c = document.createElement('button'); c.type = 'button'; c.className = 'chip'; c.dataset.id = id; c.textContent = b.n; picker.appendChild(c); });
+  picker.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { sel = b.dataset.id; render(); } });
+  cv.addEventListener('click', e => {
+    const r = cv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+    let best = null, bd = 40; for (const [id, p] of Object.entries(pos)) { const d = Math.hypot(p[0] - x, p[1] - y); if (d < bd) { bd = d; best = id; } }
+    if (best) { sel = best; render(); }
+  });
+  function build(w, h) {
+    const bg = document.createElement('canvas'); bg.width = w * 2; bg.height = h * 2; const g = bg.getContext('2d'); g.scale(2, 2);
+    const R = rng(12);
+    let gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, '#9fb98a'); gr.addColorStop(.3, '#4f6e45'); gr.addColorStop(.75, '#2a3b26'); gr.addColorStop(1, '#1d2416'); g.fillStyle = gr; g.fillRect(0, 0, w, h);
+    const ground = h * .88, t1 = { x: w * .3, w: Math.max(18, w * .055) }, t2 = { x: w * .72, w: Math.max(14, w * .045) };
+    // far trunks
+    for (let i = 0; i < 9; i++) { const x = R() * w, tw = 4 + R() * 6; g.fillStyle = 'rgba(40,52,36,.55)'; g.fillRect(x, h * .2, tw, ground - h * .2); }
+    // limbs
+    const limb = (x, y, x2, y2, wd) => { g.strokeStyle = '#3a2c20'; g.lineCap = 'round'; g.lineWidth = wd; g.beginPath(); g.moveTo(x, y); g.quadraticCurveTo((x + x2) / 2, y - (y - y2) * .2, x2, y2); g.stroke(); };
+    limb(t1.x, h * .3, w * .08, h * .2, t1.w * .35); limb(t1.x, h * .26, w * .5, h * .12, t1.w * .3); limb(t1.x, h * .4, w * .12, h * .38, 5);
+    limb(t2.x, h * .26, w * .95, h * .14, t2.w * .35); limb(t2.x, h * .24, w * .55, h * .12, t2.w * .3);
+    // trunks with bark
+    [t1, t2].forEach(t => {
+      const tg = g.createLinearGradient(t.x - t.w / 2, 0, t.x + t.w / 2, 0); tg.addColorStop(0, '#2b2018'); tg.addColorStop(.4, '#5a4636'); tg.addColorStop(1, '#2b2018');
+      g.fillStyle = tg; g.beginPath(); g.moveTo(t.x - t.w * .5, h * .15); g.lineTo(t.x + t.w * .5, h * .15); g.lineTo(t.x + t.w * .75, ground); g.lineTo(t.x - t.w * .75, ground); g.fill();
+      g.strokeStyle = 'rgba(15,10,6,.6)'; g.lineWidth = 1; for (let i = 0; i < 9; i++) { const x0 = t.x - t.w * .45 + i * t.w * .11; g.beginPath(); for (let y = h * .15; y < ground; y += 8) g.lineTo(x0 + Math.sin(y * .08 + i) * 1.5 + (y - h * .15) / (ground - h * .15) * (x0 - t.x) * .5, y); g.stroke(); }
+    });
+    // hollow for the owl, hole for tits
+    g.fillStyle = '#0d0906'; g.beginPath(); g.ellipse(t1.x, h * .5, t1.w * .32, t1.w * .5, 0, 0, TAU); g.fill();
+    g.strokeStyle = '#6b5440'; g.lineWidth = 2; g.stroke();
+    g.fillStyle = '#0d0906'; g.beginPath(); g.arc(t2.x - t2.w * .1, h * .52, Math.max(3, t2.w * .14), 0, TAU); g.fill();
+    // canopy
+    for (let i = 0; i < 520; i++) {
+      const x = R() * w, y = R() * h * .3 + (R() < .3 ? h * .02 : 0), l = 4 + R() * 6, a = R() * TAU;
+      g.save(); g.translate(x, y); g.rotate(a); g.fillStyle = shade(['#3c6d33', '#4f7f3a', '#2f5a2c', '#6b9444', '#b8862f'][R() * 5 | 0], .7 + (1 - y / (h * .3)) * .5); g.beginPath(); g.ellipse(0, 0, l, l * .45, 0, 0, TAU); g.fill(); g.restore();
+    }
+    // shrubs and ground
+    for (let i = 0; i < 160; i++) { const x = R() * w, y = h * .76 + R() * h * .12, r = 4 + R() * 10; g.fillStyle = shade(['#2f5a2c', '#3c6d33', '#4a5a2a'][R() * 3 | 0], .7); g.beginPath(); g.arc(x, y, r, 0, TAU); g.fill(); }
+    g.fillStyle = '#3a2c1c'; g.fillRect(0, ground, w, h - ground);
+    for (let i = 0; i < 120; i++) { g.fillStyle = ['#7a5428', '#5a3a1e', '#8a6a34'][R() * 3 | 0]; g.beginPath(); g.ellipse(R() * w, ground + 2 + R() * (h - ground - 4), 3, 1.3, R() * 3, 0, TAU); g.fill(); }
+    // storey labels
+    g.font = '600 10px Figtree, system-ui, sans-serif'; g.fillStyle = 'rgba(245,240,220,.8)';
+    [['CANOPY', h * .06], ['TRUNK AND LIMBS', h * .34], ['HOLES AND HOLLOWS', h * .56], ['SHRUB LAYER', h * .8], ['WOODLAND FLOOR', h * .96]].forEach(([t, y]) => { g.fillStyle = 'rgba(10,14,8,.55)'; const tw = g.measureText(t).width; g.fillRect(8, y - 10, tw + 10, 14); g.fillStyle = 'rgba(245,240,220,.85)'; g.fillText(t, 13, y); });
+    return { bg, w, h, ground, t1, t2 };
+  }
+  const lerp = (a, b, t) => a + (b - a) * t, ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  const arc = (p, q, t, lift) => [lerp(p[0], q[0], t), lerp(p[1], q[1], t) - Math.sin(t * Math.PI) * lift];
+  function frame(t, still) {
+    const r = cv.getBoundingClientRect(); if (!G || Math.abs(G.w - r.width) > 1 || Math.abs(G.h - r.height) > 1) G = build(r.width, r.height);
+    const { ctx, w, h } = fitCanvas(cv, 2); ctx.drawImage(G.bg, 0, 0, w, h);
+    const { t1, t2, ground } = G, S = Math.max(5, w * .011); if (still) t = 4200;
+    const B = {};
+    // treecreeper: spirals up trunk 1
+    { const c = (t % 14000) / 14000; if (c < .86) { const p = c / .86, y = lerp(ground - 12, h * .2, p), x = t1.x + Math.sin(p * 22) * t1.w * .28; B.treecreeper = [x, y, -Math.PI / 2, Math.cos(p * 22) < 0, null]; } else { const p = (c - .86) / .14; const [x, y] = arc([t1.x, h * .2], [t1.x - t1.w * .2, ground - 12], p, 10); B.treecreeper = [x, y, .5, false, t / 40]; } }
+    // nuthatch: head-first down trunk 2
+    { const c = (t % 11000) / 11000; if (c < .82) { const p = c / .82; B.nuthatch = [t2.x + t2.w * .55, lerp(h * .2, ground - 16, p), Math.PI / 2, false, null]; } else { const p = (c - .82) / .18; const [x, y] = arc([t2.x + t2.w * .55, ground - 16], [t2.x + t2.w * .55, h * .2], p, -20); B.nuthatch = [x + Math.sin(p * Math.PI) * 30, y, -.4, false, t / 40]; } }
+    // woodpecker drumming on trunk 2
+    { const drum = (t % 4000) < 900 && !still, jit = drum ? Math.sin(t / 25) * 2 : 0; B.woodpecker = [t2.x - t2.w * .62 + jit, h * .3, -Math.PI / 2, true, null];
+      if (drum) { ctx.strokeStyle = 'rgba(255,240,200,.5)'; ctx.lineWidth = 1.2; for (let k = 0; k < 3; k++) { const rr = ((t % 900) / 900 * 40 + k * 14) % 42; ctx.beginPath(); ctx.arc(t2.x - t2.w * .5, h * .27, rr, Math.PI * .6, Math.PI * 1.4); ctx.stroke(); } } }
+    // great tit: canopy to nest hole and back, caterpillar in beak
+    { const c = (t % 8000) / 8000, A = [w * .6, h * .18], H = [t2.x - t2.w * .1 - 12, h * .52];
+      let p; if (c < .35) { const hop = Math.abs(Math.sin(c * 40)) * 4; B.greatTit = [A[0] + Math.sin(c * 9) * 14, A[1] - hop, 0, false, null]; }
+      else if (c < .5) { p = (c - .35) / .15; const [x, y] = arc(A, H, ease(p), 30); B.greatTit = [x, y, .2, false, t / 35]; B.cat = true; }
+      else if (c < .75) { B.greatTit = [H[0], H[1], -.2, false, null]; B.cat = c < .6; }
+      else { p = (c - .75) / .25; const [x, y] = arc(H, A, ease(p), 30); B.greatTit = [x, y, -.2, true, t / 35]; } }
+    // blue tit: hanging from twig tips
+    { const pts = [[w * .42, h * .13], [w * .5, h * .1], [w * .46, h * .17]], i = Math.floor(t / 2600) % 3, c = (t % 2600) / 2600, a = pts[i], b = pts[(i + 1) % 3];
+      if (c < .8) B.blueTit = [a[0], a[1] + Math.sin(t / 300) * 2, Math.PI + .3, true, null]; else { const [x, y] = arc(a, b, (c - .8) / .2, 12); B.blueTit = [x, y, 0, b[0] < a[0], t / 30]; } }
+    // jay: canopy -> ground to bury an acorn -> back
+    { const c = (t % 13000) / 13000, A = [w * .88, h * .2], Gp = [w * .53, ground - 8];
+      if (c < .15) B.jay = [A[0], A[1], 0, true, null];
+      else if (c < .35) { const [x, y] = arc(A, Gp, ease((c - .15) / .2), 40); B.jay = [x, y, .25, true, t / 45]; B.acorn = [x - S * 2.2, y - S * .3]; }
+      else if (c < .55) { const dig = Math.abs(Math.sin(c * 120)) * .5; B.jay = [Gp[0], Gp[1], dig, true, null]; if (c < .45) B.acorn = [Gp[0] - S * 3, Gp[1] + 3]; }
+      else if (c < .75) { const [x, y] = arc(Gp, A, ease((c - .55) / .2), 40); B.jay = [x, y, -.2, false, t / 45]; }
+      else B.jay = [A[0], A[1], 0, true, null];
+      // planted acorns that sprout over time
+      ctx.fillStyle = '#8a6a34'; [[.53, 1], [.46, .6], [.6, .3]].forEach(([fx, g2]) => { const x = w * fx, y = ground + 3; ctx.beginPath(); ctx.ellipse(x, y, 2.5, 3.2, 0, 0, TAU); ctx.fill(); if (g2 < .9) { ctx.strokeStyle = '#7fae55'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y - 10 * (1 - g2)); ctx.stroke(); } }); }
+    // flycatcher sallying
+    { const c = (t % 5000) / 5000, P = [w * .16, h * .37], Q = [w * .08, h * .27];
+      if (c < .7) B.flycatcher = [P[0], P[1], 0, true, null]; else { const p = (c - .7) / .3, tt = p < .5 ? p * 2 : 2 - p * 2; const [x, y] = arc(P, Q, tt, 16); B.flycatcher = [x, y, 0, p < .5, t / 25]; }
+      if (c > .55 && c < .85) { ctx.fillStyle = 'rgba(255,250,220,.8)'; ctx.beginPath(); ctx.arc(Q[0] + Math.sin(t / 60) * 3, Q[1] + Math.cos(t / 70) * 3, 1.3, 0, TAU); ctx.fill(); } }
+    // owl in the hollow
+    { const blink = !still && (t % 5200) < 160; const x = t1.x, y = h * .5, s = t1.w * .28;
+      ctx.fillStyle = '#8a6a45'; ctx.beginPath(); ctx.ellipse(x, y + s * .3, s * .9, s * 1.2, 0, 0, TAU); ctx.fill();
+      ctx.fillStyle = '#b8946a'; ctx.beginPath(); ctx.ellipse(x - s * .38, y - s * .1, s * .4, s * .42, 0, 0, TAU); ctx.ellipse(x + s * .38, y - s * .1, s * .4, s * .42, 0, 0, TAU); ctx.fill();
+      ctx.fillStyle = '#0a0a0a'; if (blink) { ctx.fillRect(x - s * .6, y - s * .12, s * .4, s * .06); ctx.fillRect(x + s * .2, y - s * .12, s * .4, s * .06); } else { ctx.beginPath(); ctx.arc(x - s * .38, y - s * .1, s * .2, 0, TAU); ctx.arc(x + s * .38, y - s * .1, s * .2, 0, TAU); ctx.fill(); }
+      ctx.fillStyle = '#d9b26a'; ctx.beginPath(); ctx.moveTo(x - s * .1, y + s * .1); ctx.lineTo(x + s * .1, y + s * .1); ctx.lineTo(x, y + s * .35); ctx.fill();
+      B.owl = [x, y]; }
+    pos = {};
+    for (const [id, v] of Object.entries(B)) {
+      if (!BIRD_LOOK[id]) continue;
+      const [x, y, a, f, flap] = v; drawBird(ctx, id, x, y, S, a, f, flap); pos[id] = [x, y];
+      if (id === 'greatTit' && B.cat) { ctx.strokeStyle = '#8fc04a'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x + (f ? -1 : 1) * S * 2.3, y - S * .5); ctx.lineTo(x + (f ? -1 : 1) * S * 3.3, y - S * .1); ctx.stroke(); }
+    }
+    pos.owl = B.owl;
+    if (B.acorn) { ctx.fillStyle = '#8a6a34'; ctx.beginPath(); ctx.ellipse(B.acorn[0], B.acorn[1], 2.4, 3, 0, 0, TAU); ctx.fill(); ctx.fillStyle = '#5a4020'; ctx.fillRect(B.acorn[0] - 2.4, B.acorn[1] - 3.4, 4.8, 1.6); }
+    // highlight selected bird
+    const sp = pos[sel]; if (sp) { ctx.strokeStyle = 'rgba(255,244,208,.9)'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.arc(sp[0], sp[1], S * 3.4, 0, TAU); ctx.stroke(); ctx.setLineDash([]); }
+  }
+  function render() {
+    const b = BIRDS[sel];
+    $$('button', picker).forEach(c => c.setAttribute('aria-pressed', String(c.dataset.id === sel)));
+    info.innerHTML = `<div class="card"><p class="eyebrow">${esc(b.where)}</p><h3>${esc(b.n)}</h3><span class="sub">${esc(b.l)}</span><p>${esc(b.p)}</p></div>
+      <div class="card"><dl><dt>Lives</dt><dd>${esc(b.where)}</dd><dt>Eats</dt><dd>${esc(b.eats)}</dd><dt>Needs from the tree</dt><dd>${esc(b.needs)}</dd></dl><div class="ev-row">${badge(b.ev[0], b.ev[1])}</div></div>`;
+    if (isCalm()) frame(0, true);
+  }
+  loop(stage, frame);
+  render();
+})();
+
+/* ================= signals ================= */
+(() => {
+  const stage = $('#sig-stage'), cv = $('#sig-canvas'), picker = $('#sig-picker'), info = $('#sig-info'); if (!cv) return;
+  const SIG = {
+    alarm: { n: 'Airborne alarm', to: 'Neighbouring trees and plants', how: 'When insects chew its leaves, a tree releases a blend of volatile compounds into the air, including the "green leaf" smell of cut grass. Neighbours downwind that smell it can prime their own defences, so they respond faster and harder when they are attacked in turn. It has been shown in sagebrush, alder, lima beans, maize and many others.',
+      more: 'The first "talking trees" study, on willows in 1983, was dismissed at the time. Later work has firmly supported the general idea, though whether the signal is meant for neighbours or is mainly the tree warning its own distant branches is still discussed.', ev: ['strong'] },
+    guards: { n: 'Calling bodyguards', to: 'Parasitic wasps and insect-eating birds', how: 'Chewed leaves give off a different scent from leaves that are merely torn. Parasitic wasps follow that scent to the caterpillars and lay their eggs inside them. In a landmark 1990 experiment, maize seedlings chewed by caterpillars attracted far more parasitic wasps than undamaged ones. Great tits, too, find caterpillar-infested trees partly by these cues.',
+      more: 'This is sometimes described as a plant "crying for help". The plant may not intend anything, but natural selection has favoured trees whose scents bring their attackers\' enemies.', ev: ['strong'] },
+    tannin: { n: 'Bitter leaves', to: 'Browsing animals', how: 'Browsing can make a tree pump more tannins and other defensive chemicals into its leaves within hours or days, making them bitter and hard to digest. Grazers learn to move on. Oak leaves grow tougher and more tannin-rich through the summer.',
+      more: 'A famous story tells of South African acacias that killed penned kudu antelope this way and warned each other with ethylene gas. It comes from one investigation in the 1980s and is often repeated. Treat it as a plausible anecdote; the underlying defence response is well documented.', ev: ['mixed', 'Defence well supported; kudu story anecdotal'] },
+    flowers: { n: 'Colour, scent and sugar', to: 'Bees, moths, birds and bats', how: 'Flowers advertise nectar with colour, scent, and ultraviolet patterns that bees can see and we cannot. A single lime tree in full flower can hum with bees from a distance. Fruit changes colour as it ripens, often to red or black, telling birds the seeds inside are ready to travel.',
+      more: 'The deal is food in exchange for transport: pollen carried to another tree, seeds carried away from the parent\'s shade. Many tropical trees depend entirely on one group of animals, such as bats, hornbills or fig wasps.', ev: ['strong'] },
+    sound: { n: 'Clicks of thirst', to: 'Unknown listeners, and scientists', how: 'In drought, the water columns in the wood are pulled so hard that air bubbles snap into them. This cavitation makes ultrasonic clicks, far above human hearing, which scientists have recorded from trees for decades. In 2023, researchers recorded airborne ultrasonic sounds from stressed tomato and tobacco plants, and could tell from the sounds alone whether a plant was thirsty or had been cut.',
+      more: 'Whether any animal listens is unknown. Moths and bats hear in this range, so it is possible, but no one has shown it yet.', ev: ['mixed'] },
+    electric: { n: 'Electric alarms', to: 'The tree\'s own distant leaves', how: 'A bite on one leaf sends electrical and chemical signals racing through the plant. Within minutes, leaves far away switch on their defences. In 2018 scientists filmed this in thale cress, using a glowing marker that lit up as a wave of calcium swept through the whole plant.',
+      more: 'This internal signalling is well established in many plants. It has been studied far less in big trees, where distances are greater and experiments are harder.', ev: ['mixed', 'Strong in plants, less studied in trees'] },
+    under: { n: 'Through the fungal network', to: 'Neighbouring trees linked by fungi', how: 'Some experiments, mostly with seedlings in pots, have found that defence signals and carbon can pass between plants joined by mycorrhizal fungi. You can explore this in more depth in the roots, at the bottom of the page.',
+      more: 'How common or important this is in mature forests is one of the most debated questions in forest ecology.', ev: ['debated'] }
+  };
+  let sel = 'alarm', G = null, modeStart = 0;
+  Object.entries(SIG).forEach(([id, s]) => { const c = document.createElement('button'); c.type = 'button'; c.className = 'chip'; c.dataset.id = id; c.textContent = s.n; picker.appendChild(c); });
+  picker.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { sel = b.dataset.id; modeStart = performance.now(); render(); } });
+  function build(w, h) {
+    const ground = h * .74, trees = [];
+    [.2, .52, .82].forEach((fx, i) => {
+      const x = w * fx, H = h * (i === 0 ? .5 : .42);
+      const tr = genTree({ ...SPECIES_SPECS.oak, depth: 6 }, 70 + i * 13);
+      const sc = H / 96, segs = tr.segs.map(s => ({ x1: x + (s.x1 - 50) * sc, y1: ground + (s.y1 - 116) * sc, x2: x + (s.x2 - 50) * sc, y2: ground + (s.y2 - 116) * sc, w: (s.w1 + s.w2) / 2 * sc }));
+      const tips = tr.tips.map(t => ({ x: x + (t.x - 50) * sc, y: ground + (t.y - 116) * sc }));
+      const roots = genTree({ depth: 4, taper: .55, minW: .3, wobble: .5, steps: 3, trop: toward(DOWN, .06), kids: (d, R) => [{ da: -(.3 + R() * .5), l: .72, w: .62 }, { da: .3 + R() * .5, l: .72, w: .62 }], build: br => [-1, -.3, .3, 1].forEach(da => br(x, ground, DOWN + da * .9, (h - ground) * .35, 4, 0)) }, 90 + i);
+      trees.push({ x, H, segs, tips, roots: roots.segs, rtips: roots.tips, primed: 0 });
+    });
+    return { w, h, ground, trees };
+  }
+  function frame(now, still) {
+    const r = cv.getBoundingClientRect(); if (!G || Math.abs(G.w - r.width) > 1 || Math.abs(G.h - r.height) > 1) G = build(r.width, r.height);
+    const { ctx, w, h } = fitCanvas(cv, 2), { ground, trees } = G;
+    const t = still ? 6000 : now - modeStart, T = now;
+    const dry = sel === 'sound';
+    let gr = ctx.createLinearGradient(0, 0, 0, ground); gr.addColorStop(0, dry ? '#e6c98e' : '#a9c4c9'); gr.addColorStop(1, dry ? '#c9a46a' : '#dfe3c6'); ctx.fillStyle = gr; ctx.fillRect(0, 0, w, ground);
+    gr = ctx.createLinearGradient(0, ground, 0, h); gr.addColorStop(0, '#4a3524'); gr.addColorStop(1, '#1c140e'); ctx.fillStyle = gr; ctx.fillRect(0, ground, w, h - ground);
+    ctx.strokeStyle = '#6b8f45'; ctx.lineWidth = 1; for (let x = 0; x < w; x += 4) { ctx.beginPath(); ctx.moveTo(x, ground); ctx.lineTo(x + 1, ground - 3 - (x * 7 % 5)); ctx.stroke(); }
+    if (dry) { ctx.fillStyle = 'rgba(255,230,150,.9)'; ctx.beginPath(); ctx.arc(w * .9, h * .12, 22, 0, TAU); ctx.fill(); }
+    // roots, and fungal links when relevant
+    trees.forEach(tr => { tr.roots.forEach(s => { ctx.strokeStyle = 'rgba(150,115,80,.8)'; ctx.lineWidth = Math.max(.6, (s.w1 + s.w2) / 2 * .6); ctx.beginPath(); ctx.moveTo(s.x1, s.y1); ctx.lineTo(s.x2, s.y2); ctx.stroke(); }); });
+    if (sel === 'under') {
+      for (let i = 0; i < 2; i++) {
+        const a = trees[i].rtips.reduce((m, p) => p.x > m.x ? p : m), b = trees[i + 1].rtips.reduce((m, p) => p.x < m.x ? p : m);
+        const pts = []; for (let k = 0; k <= 30; k++) { const q = k / 30; pts.push([a.x + (b.x - a.x) * q, a.y + (b.y - a.y) * q + Math.sin(q * Math.PI) * 30 + Math.sin(q * 20) * 3]); }
+        ctx.strokeStyle = 'rgba(241,226,173,.75)'; ctx.lineWidth = 1.2; ctx.beginPath(); pts.forEach(([x, y], k) => k ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke();
+        const p = ((t / 2400) - i * .5) % 1; if (p > 0) { const f = p * 30, k = Math.floor(f), [x, y] = pts[Math.min(k, 30)]; const g2 = ctx.createRadialGradient(x, y, 0, x, y, 12); g2.addColorStop(0, 'rgba(239,159,143,.95)'); g2.addColorStop(1, 'rgba(239,159,143,0)'); ctx.fillStyle = g2; ctx.beginPath(); ctx.arc(x, y, 12, 0, TAU); ctx.fill(); }
+      }
+    }
+    // trees
+    trees.forEach((tr, i) => {
+      const primed = sel === 'alarm' || sel === 'under' ? Math.max(0, Math.min(1, (t - 2500 - i * 1600) / 1500)) * (i > 0 ? 1 : 0) : 0;
+      const bite = { x: trees[0].tips[0].x, y: trees[0].tips[0].y };
+      tr.segs.forEach(s => {
+        let col = '#3a2a1e';
+        if (sel === 'electric' && i === 0) { const d = Math.hypot(s.x2 - bite.x, s.y2 - bite.y), front = (t / 1200 % 2.2) * w * .3; const glow = Math.max(0, 1 - Math.abs(d - front) / 40); if (glow > 0) col = mix('#3a2a1e', '#ffe28a', glow); }
+        ctx.strokeStyle = col; ctx.lineCap = 'round'; ctx.lineWidth = Math.max(.8, s.w); ctx.beginPath(); ctx.moveTo(s.x1, s.y1); ctx.lineTo(s.x2, s.y2); ctx.stroke();
+      });
+      const tan = sel === 'tannin' && i === 0 ? Math.min(1, t / 5000) : 0;
+      tr.tips.forEach((p, j) => {
+        let col = ['#3c6d33', '#4f7f3a', '#5b8a3f'][j % 3];
+        if (tan) col = mix(col, '#5a4a20', tan * .6);
+        ctx.fillStyle = col; ctx.beginPath(); ctx.arc(p.x, p.y, 7 + (j % 3) * 2, 0, TAU); ctx.fill();
+        if (primed > 0) { ctx.strokeStyle = `rgba(220,240,150,${primed * .5})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(p.x, p.y, 9 + (j % 3) * 2, 0, TAU); ctx.stroke(); }
+        if (sel === 'flowers' && i === 0 && j % 2 === 0) { ctx.fillStyle = '#f6efc8'; ctx.beginPath(); ctx.arc(p.x + 3, p.y - 3, 2.6, 0, TAU); ctx.fill(); }
+        if (sel === 'flowers' && i === 2 && j % 3 === 0) { ctx.fillStyle = '#b8282a'; ctx.beginPath(); ctx.arc(p.x - 2, p.y + 4, 2.4, 0, TAU); ctx.fill(); }
+      });
+    });
+    const A = trees[0], cat = A.tips[0];
+    // caterpillar
+    if (['alarm', 'guards', 'electric', 'under'].includes(sel)) { ctx.strokeStyle = '#8fc04a'; ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.beginPath(); for (let k = 0; k < 5; k++) { const x = cat.x - 6 + k * 3, y = cat.y + 8 + Math.sin(k + T / 200) * 1.2; k ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.stroke(); }
+    // airborne puffs
+    if (sel === 'alarm' || sel === 'guards') {
+      for (let k = 0; k < 9; k++) {
+        const p = ((t / 6000) + k / 9) % 1, x = A.x + p * (w - A.x) * (sel === 'guards' ? .5 : 1), y = ground - A.H * .75 + Math.sin(p * 9 + k) * 18;
+        const g2 = ctx.createRadialGradient(x, y, 0, x, y, 26 + p * 30); g2.addColorStop(0, `rgba(200,220,170,${.38 * (1 - p)})`); g2.addColorStop(1, 'rgba(200,220,170,0)'); ctx.fillStyle = g2; ctx.beginPath(); ctx.arc(x, y, 26 + p * 30, 0, TAU); ctx.fill();
+      }
+    }
+    if (sel === 'guards') {
+      for (let k = 0; k < 4; k++) { const p = ((t / 4000) + k * .25) % 1, x = w - p * (w - cat.x), y = cat.y - 30 + Math.sin(p * 20 + k) * 20 + k * 6; ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(x - 4, y); ctx.lineTo(x + 4, y); ctx.stroke(); ctx.strokeStyle = 'rgba(255,255,255,.7)'; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - 2, y - 4 - Math.sin(T / 20) * 2); ctx.moveTo(x, y); ctx.lineTo(x + 2, y - 4 - Math.sin(T / 20) * 2); ctx.stroke(); }
+      const c = (t % 9000) / 9000; if (c > .3) { const p = Math.min(1, (c - .3) / .4); const x = w * 1.05 - p * (w * 1.05 - cat.x - 18), y = h * .15 + p * (cat.y - h * .15); drawBird(ctx, 'greatTit', x, y, Math.max(4, w * .009), 0, true, p < 1 ? T / 35 : null); }
+    }
+    if (sel === 'tannin') {
+      const p = Math.min(1, t / 9000), x = A.x - 30 + p * w * .5, y = ground; // deer
+      ctx.fillStyle = '#7a5434'; ctx.beginPath(); ctx.ellipse(x, y - 28, 22, 11, 0, 0, TAU); ctx.fill();
+      ctx.fillRect(x - 16, y - 22, 3, 22); ctx.fillRect(x + 13, y - 22, 3, 22); ctx.fillRect(x - 9, y - 20, 3, 20); ctx.fillRect(x + 6, y - 20, 3, 20);
+      const up = p < .4 ? 1 : 0; ctx.save(); ctx.translate(x + 18, y - 34); ctx.rotate(up ? -.9 : -.2); ctx.fillRect(0, -3, 18, 6); ctx.beginPath(); ctx.ellipse(20, 0, 7, 5, 0, 0, TAU); ctx.fill(); ctx.restore();
+    }
+    if (sel === 'flowers') {
+      for (let k = 0; k < 5; k++) { const p = (T / 3000 + k * .2) % 1, a = A.tips[(k * 3) % A.tips.length], b = A.tips[(k * 3 + 5) % A.tips.length], x = a.x + (b.x - a.x) * p + Math.sin(p * 30) * 6, y = a.y + (b.y - a.y) * p + Math.cos(p * 25) * 5; ctx.fillStyle = '#e8b830'; ctx.beginPath(); ctx.ellipse(x, y, 3, 2, 0, 0, TAU); ctx.fill(); ctx.fillStyle = '#1a1a1a'; ctx.fillRect(x - .5, y - 2, 1, 4); ctx.fillStyle = 'rgba(255,255,255,.7)'; ctx.beginPath(); ctx.ellipse(x, y - 3, 2, 1.2, 0, 0, TAU); ctx.fill(); }
+      const C = trees[2], c = (t % 8000) / 8000, f = C.tips[3] || C.tips[0];
+      const x = c < .4 ? w * 1.05 - (c / .4) * (w * 1.05 - f.x) : f.x - ((c - .4) / .6) * w * .9, y = c < .4 ? h * .1 + (c / .4) * (f.y - h * .1) : f.y - Math.sin((c - .4) / .6 * Math.PI) * 50;
+      drawBird(ctx, 'flycatcher', x, y, Math.max(4, w * .009), 0, c < .4, T / 35);
+      if (c > .45) { ctx.fillStyle = '#b8282a'; ctx.beginPath(); ctx.arc(x - 12, y, 2, 0, TAU); ctx.fill(); }
+      if (c > .85) { ctx.fillStyle = '#6b4a2a'; ctx.beginPath(); ctx.arc(w * .12, ground + 4, 2.2, 0, TAU); ctx.fill(); ctx.strokeStyle = '#7fae55'; ctx.beginPath(); ctx.moveTo(w * .12, ground + 2); ctx.lineTo(w * .12, ground - 6); ctx.stroke(); }
+    }
+    if (sel === 'sound') {
+      for (let k = 0; k < 6; k++) { const p = ((T / 1400) + k / 6) % 1; ctx.strokeStyle = `rgba(255,255,255,${.55 * (1 - p)})`; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.arc(A.x, ground - A.H * .35, 10 + p * w * .22, -Math.PI * .35, Math.PI * .35); ctx.stroke(); ctx.beginPath(); ctx.arc(A.x, ground - A.H * .35, 10 + p * w * .22, Math.PI * .65, Math.PI * 1.35); ctx.stroke(); }
+      A.tips.forEach((p, j) => { if (j % 2) return; ctx.fillStyle = 'rgba(160,130,60,.6)'; ctx.beginPath(); ctx.arc(p.x, p.y, 6, 0, TAU); ctx.fill(); });
+      ctx.font = '600 11px Figtree, system-ui, sans-serif'; ctx.fillStyle = 'rgba(30,20,10,.85)'; ctx.fillText('ultrasonic clicks · too high for human ears', A.x + 20, ground - A.H * .35 - 6);
+    }
+    ctx.font = '600 10px Figtree, system-ui, sans-serif'; ctx.fillStyle = 'rgba(20,16,10,.75)';
+    if (sel === 'alarm' || sel === 'under') { trees.slice(1).forEach((tr, i) => { if (t > 2500 + (i + 1) * 1600) { ctx.fillStyle = 'rgba(20,30,10,.8)'; ctx.fillText('defences primed', tr.x - 34, ground - tr.H - 8); } }); }
+  }
+  function render() {
+    const s = SIG[sel];
+    $$('button', picker).forEach(c => c.setAttribute('aria-pressed', String(c.dataset.id === sel)));
+    info.innerHTML = `<div class="card"><p class="eyebrow">Heard by: ${esc(s.to)}</p><h3>${esc(s.n)}</h3><p>${esc(s.how)}</p></div><div class="card"><p class="muted">${esc(s.more)}</p><div class="ev-row">${badge(s.ev[0], s.ev[1])}</div></div>`;
+    if (isCalm()) frame(0, true);
+  }
+  loop(stage, frame);
+  render();
+})();
+
+/* ================= rivers in the sky ================= */
+(() => {
+  const stage = $('#wx-stage'), cv = $('#wx-canvas'); if (!cv) return;
+  let clouds = [], drops = [], vap = [], last = 0, G = null;
+  const R = rng(8);
+  function build(w, h) {
+    const ground = h * .72, forests = [[.24, .38], [.46, .6], [.68, .8]].map(([a, b]) => ({ a: a * w, b: b * w, wet: 0 }));
+    const trees = []; forests.forEach(f => { for (let x = f.a; x < f.b; x += 7 + R() * 7) trees.push({ x, r: 6 + R() * 7, c: ['#2f5a2c', '#3c6d33', '#4f7f3a'][R() * 3 | 0] }); });
+    return { w, h, ground, forests, trees };
+  }
+  function frame(t, still) {
+    const r = cv.getBoundingClientRect(); if (!G || Math.abs(G.w - r.width) > 1 || Math.abs(G.h - r.height) > 1) { G = build(r.width, r.height); clouds = []; drops = []; vap = []; }
+    const { ctx, w, h } = fitCanvas(cv, 2), { ground, forests, trees } = G;
+    const dt = still ? 16 : Math.min(50, last ? t - last : 16); last = t;
+    const steps = still ? 260 : 1;
+    for (let s = 0; s < steps; s++) {
+      if (R() < .02 * dt / 16) clouds.push({ x: w * .05, y: h * (.16 + R() * .1), m: 1, vx: w * .00004 });
+      clouds.forEach(c => { c.x += c.vx * dt; const f = forests.find(fo => c.x > fo.a && c.x < fo.b); if (f && c.m > .25) { c.m -= .0006 * dt; f.wet = Math.min(1, f.wet + .002 * dt); if (R() < .3) drops.push({ x: c.x + (R() - .5) * 40, y: c.y + 10, v: h * .0006 }); } if (c.x > w * .86) c.m -= .0012 * dt; });
+      forests.forEach((f, i) => { f.wet = Math.max(0, f.wet - .00012 * dt); if (R() < f.wet * .25) vap.push({ x: f.a + R() * (f.b - f.a), y: ground - 10, v: h * .00012, life: 1 }); });
+      vap.forEach(v => { v.y -= v.v * dt; v.x += w * .00002 * dt; v.life -= .0005 * dt; if (v.y < h * .26) { v.life = 0; const c = clouds.find(c2 => Math.abs(c2.x - v.x) < 60); if (c) c.m = Math.min(1.3, c.m + .01); else clouds.push({ x: v.x, y: h * (.18 + R() * .08), m: .35, vx: w * .00004 }); } });
+      drops.forEach(d => d.y += d.v * dt);
+      clouds = clouds.filter(c => c.m > .05 && c.x < w + 80); drops = drops.filter(d => d.y < ground); vap = vap.filter(v => v.life > 0);
+    }
+    let gr = ctx.createLinearGradient(0, 0, 0, ground); gr.addColorStop(0, '#5f8aa0'); gr.addColorStop(1, '#c9d9cf'); ctx.fillStyle = gr; ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = '#2f5f7a'; ctx.fillRect(0, ground, w * .16, h - ground);
+    ctx.fillStyle = '#5a4a32'; ctx.fillRect(w * .16, ground, w * .84, h - ground);
+    ctx.fillStyle = '#7a7268'; ctx.beginPath(); ctx.moveTo(w * .84, ground); ctx.lineTo(w * .92, ground - h * .3); ctx.lineTo(w * .96, ground - h * .22); ctx.lineTo(w, ground - h * .34); ctx.lineTo(w, ground); ctx.fill();
+    ctx.fillStyle = '#f2f2ee'; ctx.beginPath(); ctx.moveTo(w * .9, ground - h * .26); ctx.lineTo(w * .92, ground - h * .3); ctx.lineTo(w * .935, ground - h * .27); ctx.fill();
+    trees.forEach(tr => { ctx.fillStyle = '#3a2a1e'; ctx.fillRect(tr.x - 1, ground - tr.r * 1.8, 2, tr.r * 1.8); ctx.fillStyle = tr.c; ctx.beginPath(); ctx.arc(tr.x, ground - tr.r * 1.8, tr.r, 0, TAU); ctx.fill(); });
+    ctx.fillStyle = 'rgba(160,210,235,.8)'; drops.forEach(d => ctx.fillRect(d.x, d.y, 1.2, 6));
+    vap.forEach(v => { ctx.fillStyle = `rgba(235,245,250,${.55 * v.life})`; ctx.beginPath(); ctx.arc(v.x, v.y, 2.2, 0, TAU); ctx.fill(); });
+    clouds.forEach(c => { const s = 24 + c.m * 26; const g2 = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, s * 1.6); g2.addColorStop(0, `rgba(255,255,255,${Math.min(.95, .5 + c.m * .4)})`); g2.addColorStop(1, 'rgba(255,255,255,0)'); ctx.fillStyle = g2; ctx.beginPath(); ctx.ellipse(c.x, c.y, s * 1.6, s * .8, 0, 0, TAU); ctx.fill(); });
+    ctx.font = '600 11px Figtree, system-ui, sans-serif';
+    const lab = (txt, x, y) => { const tw = ctx.measureText(txt).width; ctx.fillStyle = 'rgba(10,20,14,.6)'; ctx.fillRect(x - 5, y - 12, tw + 10, 17); ctx.fillStyle = '#f4f2e6'; ctx.fillText(txt, x, y); };
+    lab('Ocean', w * .02, ground + 22); lab('Rain', forests[0].a, h * .44); lab('Trees breathe it back', forests[0].a + 10, ground - 50); lab('Rain again, further inland', forests[1].a, h * .44); lab('Mountains', w * .86, ground + 22);
+    ctx.strokeStyle = 'rgba(255,255,255,.75)'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(w * .12, h * .08); ctx.lineTo(w * .8, h * .08); ctx.stroke(); ctx.beginPath(); ctx.moveTo(w * .8, h * .08); ctx.lineTo(w * .79, h * .06); ctx.moveTo(w * .8, h * .08); ctx.lineTo(w * .79, h * .1); ctx.stroke();
+    lab('The flying river: wind carries recycled water inland', w * .14, h * .07);
+  }
+  loop(stage, frame);
+})();
+
+/* ================= oak census ================= */
+(() => {
+  const ZONES = [
+    { x: 30, y: 25, u: 1, title: 'The crown', intro: 'Hundreds of insect species feed on oak leaves, and their caterpillars feed the woodland\'s birds.', list: [['Purple hairstreak', 'Favonius quercus', 'A butterfly that lives almost entirely in the oak canopy, sipping honeydew high in the crown. Most people never see it.'], ['Winter moth', 'Operophtera brumata', 'Its caterpillars hatch just as oak buds burst. In some years they can strip a tree, which then grows a second flush of leaves in midsummer.'], ['Oak bush-cricket', 'Meconema thalassinum', 'A pale green cricket that hunts small insects in the leaves at night, and drums on leaves with a hind leg to call a mate.']] },
+    { x: 62, y: 30, u: 1, title: 'Acorns', intro: 'An oak may produce tens of thousands of acorns in a good year, and very few become trees.', list: [['Jay', 'Garrulus glandarius', 'Carries off and buries thousands of acorns each autumn, planting the next generation of oaks.'], ['Acorn weevil', 'Curculio glandium', 'Drills into a young acorn with a snout nearly as long as its body and lays an egg inside.'], ['Wood mouse', 'Apodemus sylvaticus', 'Stores acorns in burrows for winter. Like jays, it forgets some.']] },
+    { x: 77, y: 21, u: 1, title: 'Galls', intro: 'Galls are growths the tree forms around the eggs of tiny wasps. More than 40 kinds of gall wasp use oak in Britain.', list: [['Oak marble gall wasp', 'Andricus kollari', 'Its brown, marble-sized galls on twigs were once crushed with iron salts to make ink. Much of Europe\'s historic writing was done in oak gall ink.'], ['Oak apple gall wasp', 'Biorhiza pallida', 'Makes spongy "oak apples" in spring, home to dozens of larvae, and to other insects that move in.'], ['Spangle gall wasps', 'Neuroterus species', 'Tiny discs scattered on the undersides of leaves in autumn, each with one larva inside.']] },
+    { x: 56, y: 57, u: 1, title: 'Bark', intro: 'Old oak bark is a vertical landscape of ridges and cracks, often covered in lichens and mosses.', list: [['Lungwort lichen', 'Lobaria pulmonaria', 'A large leafy lichen that grows on old trees in ancient woods with clean air. It is a sign a wood has been undisturbed for a long time.'], ['Beard lichens', 'Usnea species', 'Hanging grey-green tufts that need very clean air.'], ['Treecreeper and nuthatch', 'Certhia, Sitta', 'They search every crack for insects and spiders, one climbing up, the other walking down.']] },
+    { x: 55, y: 45, u: 1, title: 'The hollow', intro: 'Fungi slowly eat the heartwood of old oaks, leaving hollows that animals cannot make for themselves.', list: [['Tawny owl', 'Strix aluco', 'Nests in large hollows in veteran trees.'], ['Noctule and barbastelle bats', 'Nyctalus noctula, Barbastella barbastellus', 'Roost in woodpecker holes, splits and behind loose bark.'], ['Violet click beetle', 'Limoniscus violaceus', 'One of Britain\'s rarest beetles, living only in the wood mould at the bottom of ancient hollow trees.']] },
+    { x: 76, y: 9, u: 1, title: 'Dead wood', intro: 'Dead branches high in the crown and fallen limbs below are food and shelter for a separate community.', list: [['Stag beetle', 'Lucanus cervus', 'Its larvae spend several years, often three to seven, eating rotting wood underground before emerging as adults for one summer.'], ['Beefsteak fungus', 'Fistulina hepatica', 'Grows on oak heartwood and slowly stains it a rich brown, prized by furniture makers as "brown oak".'], ['Great spotted woodpecker', 'Dendrocopos major', 'Drums on dead limbs and digs out beetle larvae.']] },
+    { x: 36, y: 88, u: 1, title: 'Roots and soil', intro: 'Below ground an oak partners with dozens of species of mycorrhizal fungi at once.', list: [['Boletes and brittlegills', 'Boletus, Russula', 'The mushrooms you find under oaks in autumn are often the fruit of fungi wrapped around its roots.'], ['Summer truffle', 'Tuber aestivum', 'Fruits underground among oak roots, and relies on animals digging it up to spread.'], ['Badger', 'Meles meles', 'Often digs its sett among the roots of old trees, where the soil holds together.']] },
+    { x: 80, y: 68, u: 1, title: 'Leaf litter', intro: 'Oak leaves are tough and rich in tannins, so they rot slowly, building a deep, spongy layer.', list: [['Woodlice, millipedes, springtails', 'Isopoda, Diplopoda, Collembola', 'Shred and graze fallen leaves, starting the slow return of nutrients to the soil.'], ['Earthworms', 'Lumbricus terrestris', 'Pull leaves down into their burrows at night.'], ['Overwintering insects', '', 'Many moths and beetles spend winter as pupae in the litter under the tree they fed on.']] }
+  ];
+  function draw(cv) {
+    const { ctx, w } = fitCanvas(cv, 2), k = w / 100, R = rng(66); ctx.clearRect(0, 0, w, w * 1.25);
+    const ground = 66;
+    // soil
+    const sg = ctx.createRadialGradient(50 * k, ground * k, 0, 50 * k, ground * k, 50 * k); sg.addColorStop(0, 'rgba(80,58,34,.6)'); sg.addColorStop(1, 'rgba(40,28,18,0)'); ctx.save(); ctx.beginPath(); ctx.rect(0, ground * k, w, (125 - ground) * k); ctx.clip(); ctx.fillStyle = sg; ctx.fillRect(0, ground * k, w, (125 - ground) * k); ctx.restore(); ctx.strokeStyle = 'rgba(235,226,200,.35)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(8 * k, ground * k); ctx.lineTo(92 * k, ground * k); ctx.stroke();
+    for (let i = 0; i < 90; i++) { ctx.strokeStyle = `rgba(200,150,80,${.25 + R() * .4})`; ctx.lineWidth = 1; const x = 5 + R() * 90, y = ground + R() * 6; ctx.beginPath(); ctx.ellipse(x * k, y * k, 1.2 * k, .5 * k, R() * 3, 0, TAU); ctx.stroke(); }
+    const tree = genTree({ ...SPECIES_SPECS.oak, depth: 7, build: br => br(50, ground, UP, 15, 6.4, 0) }, 1666);
+    const roots = genTree({ depth: 5, taper: .62, minW: .25, wobble: .5, steps: 3, trop: toward(DOWN, .05), kids: (d, R2) => [{ da: -(.35 + R2() * .4), l: .75, w: .66 }, { da: .35 + R2() * .4, l: .75, w: .64 }], build: br => [-1.2, -.5, .1, .6, 1.25].forEach(da => br(50, ground, DOWN + da * .8, 13, 3.4, 0)) }, 12);
+    inkDraw(ctx, k, roots.segs, [], { ink: 'rgba(225,200,160,.75)', fill: '#2a1d14' }, R);
+    // a dead limb up in the crown
+    const dead = [{ x1: 60, y1: 26, x2: 70, y2: 13, w1: 1.6, w2: .9, dead: true }, { x1: 70, y1: 13, x2: 74, y2: 8, w1: .9, w2: .5, dead: true }, { x1: 70, y1: 13, x2: 66, y2: 9, w1: .6, w2: .3, dead: true }];
+    inkDraw(ctx, k, tree.segs.concat(dead), tree.tips, { leafR: 6, leafN: 34 }, R);
+    // hollow, galls and acorns
+    ctx.fillStyle = '#0a0806'; ctx.beginPath(); ctx.ellipse(49.5 * k, 46 * k, 1.6 * k, 2.6 * k, 0, 0, TAU); ctx.fill(); ctx.strokeStyle = '#ebe2c8'; ctx.lineWidth = 1.2; ctx.stroke();
+    tree.tips.filter((_, i) => i % 7 === 0).forEach(tp => { ctx.fillStyle = '#b58a4a'; ctx.beginPath(); ctx.arc((tp.x + 1) * k, (tp.y + 1.5) * k, .55 * k, 0, TAU); ctx.fill(); });
+    tree.tips.filter((_, i) => i % 9 === 4).forEach(tp => { ctx.fillStyle = '#c9a060'; ctx.beginPath(); ctx.ellipse((tp.x - 1) * k, (tp.y + 2) * k, .5 * k, .7 * k, 0, 0, TAU); ctx.fill(); ctx.fillStyle = '#6b5030'; ctx.fillRect((tp.x - 1.5) * k, (tp.y + 1.1) * k, 1 * k, .4 * k); });
+    ctx.font = `500 ${Math.max(10, 1.6 * k)}px Figtree, system-ui, sans-serif`; ctx.fillStyle = 'rgba(235,226,200,.7)'; ctx.fillText('ground', 4 * k, (ground - 1) * k);
+  }
+  hotFigure('#oak-fig', '#oak-canvas', '#oak-info', ZONES, z => `<p class="eyebrow">Part of the tree</p><h3>${esc(z.title)}</h3><p>${esc(z.intro)}</p><ul class="species-list">${z.list.map(([a, b, c]) => `<li><b>${esc(a)}</b>${b ? `<i>${esc(b)}</i>` : ''}<span>${esc(c)}</span></li>`).join('')}</ul>`, draw);
+})();
+
+/* ================= your street ================= */
+(() => {
+  const r = $('#street-trees'); if (!r) return;
+  const upd = () => { const n = +r.value, y = n * .7; $('#street-n').textContent = n; $('#street-out').textContent = n === 0 ? 'no different' : `${y % 1 ? y.toFixed(1) : y} year${y === 1 ? '' : 's'} younger`; };
+  r.addEventListener('input', upd); upd();
+})();
+
+/* ================= reading a tree ================= */
+(() => {
+  const SPOTS = [
+    { x: 72, y: 18, u: 1, title: 'The swept crown', what: 'Wind direction', text: 'The whole crown streams to one side and the trunk leans with it. Trees on exposed hills and coasts grow away from the prevailing wind, which buds on the windward side die back in. Sailors and walkers have used "flagged" trees as a compass for centuries.' },
+    { x: 32, y: 53, u: 1, title: 'Bracket fungus', what: 'Decay inside', text: 'A shelf-like fungus is the fruit of a fungus already living in the wood, often rotting the dead heartwood. It does not always mean danger: an oak can stay standing and healthy for decades while its centre is slowly hollowed. Arborists read the species of bracket to judge how the wood is decaying.' },
+    { x: 57, y: 44, u: 1, title: 'The hollow', what: 'Great age', text: 'Hollowing usually begins once a tree is centuries old. A hollow cylinder can be almost as strong as a solid one for its weight, and it may help the tree: the rotting wood mould inside feeds its own roots. The hollow also makes it one of the most valuable homes in the wood.' },
+    { x: 37, y: 76, u: 1, title: 'Burr', what: 'Clusters of dormant buds', text: 'A rounded swelling covered in tiny knobs is a burr, formed where many dormant buds keep sprouting and being suppressed. Inside, the grain is wildly swirled, which woodworkers prize.' },
+    { x: 64, y: 59, u: 1, title: 'Shoots on the trunk', what: 'Stress or new light', text: 'Leafy sprouts along the trunk come from dormant buds under the bark. They often appear after the tree is stressed, damaged or suddenly exposed to more light, for instance when a neighbour is felled.' },
+    { x: 65, y: 83, u: 1, title: 'Healed wound', what: 'An old injury', text: 'A long lens-shaped scar with rolled edges marks where bark was torn away, perhaps by a falling limb or lightning. The rolls are wound wood, which the cambium grows inward from each side, year by year, to close the gap. Trees cannot heal like skin; they wall off damage and grow over it.' },
+    { x: 34, y: 64, u: 1, title: 'Lichens', what: 'The quality of the air', text: 'Long beard lichens and lungwort need very clean air. Bright orange Xanthoria lichens, by contrast, thrive where the air is rich in nitrogen, for example near busy roads or intensive farms. A trunk covered in orange is quietly reporting pollution.' },
+    { x: 68, y: 71, u: 1, title: 'Moss on one side', what: 'Shade and damp, not exactly north', text: 'Moss grows best on the shadier, wetter side of a trunk, which in the northern hemisphere is often the north. But slope, rain direction and nearby trees change this, so it is a hint, not a compass.' },
+    { x: 58, y: 33, u: 1, title: 'Woodpecker hole', what: 'Insects and nesting', text: 'A neat round hole in a dead or softening limb is a nest, and a ragged one is usually a woodpecker feeding on beetle larvae. Either way it tells you there is dead wood here, and life inside it.' },
+    { x: 50, y: 101, u: 1, title: 'The root flare', what: 'Healthy footing', text: 'A healthy trunk widens as it meets the ground, flaring into its main roots. If a tree goes straight into the soil like a post, soil may have been piled against it, which can starve the bark and roots of air.' }
+  ];
+  function draw(cv) {
+    const { ctx, w } = fitCanvas(cv, 2), k = w / 100, R = rng(1709); ctx.clearRect(0, 0, w, w * 1.25);
+    const segs = [], ground = 96;
+    // leaning trunk with flare
+    const C = t => [44 + t * 12 + Math.sin(t * 3) * 1.2, ground - t * 66];
+    for (let i = 0; i < 16; i++) { const a = C(i / 16), b = C((i + 1) / 16), wa = 15 - i / 16 * 7 + (i === 0 ? 5 : 0), wb = 15 - (i + 1) / 16 * 7 + (i === 0 ? 1 : 0); segs.push({ x1: a[0], y1: a[1], x2: b[0], y2: b[1], w1: wa, w2: wb }); }
+    const top = C(1);
+    const crown = genTree({ depth: 6, taper: .68, minW: .3, wobble: .35, steps: 3, trop: toward(UP + .55, .05), kids: (d, R2) => [{ da: -(.25 + R2() * .35), l: .76, w: .7 }, { da: .35 + R2() * .45, l: .76, w: .7 }], build: br => { br(top[0], top[1], UP + .35, 13, 7, 0); br(top[0] - 2, top[1] + 8, UP - .6, 11, 4.5, 1); br(top[0] + 1, top[1] + 4, UP + 1, 12, 4.5, 1); } }, 1816);
+    inkDraw(ctx, k, segs.concat(crown.segs), crown.tips, { leafR: 4.6, leafN: 26 }, R);
+    // roots at the flare
+    ctx.strokeStyle = '#ebe2c8'; ctx.lineWidth = 1.2; [[-1, 34], [1, 58], [-.4, 40], [.5, 54]].forEach(([d, x]) => { ctx.beginPath(); ctx.moveTo(x * k, (ground - 1) * k); ctx.quadraticCurveTo((x + d * 6) * k, (ground + 1) * k, (x + d * 12) * k, (ground + 3) * k); ctx.stroke(); });
+    for (let i = 0; i < 50; i++) { ctx.strokeStyle = 'rgba(235,226,200,.4)'; const x = 10 + R() * 80, y = ground + .5 + R() * 4; ctx.beginPath(); ctx.moveTo(x * k, y * k); ctx.lineTo((x + 2 + R() * 4) * k, y * k); ctx.stroke(); }
+    // hollow
+    ctx.fillStyle = '#060504'; ctx.beginPath(); ctx.ellipse(51.5 * k, 46 * k, 2.2 * k, 4.2 * k, .15, 0, TAU); ctx.fill(); ctx.strokeStyle = '#ebe2c8'; ctx.lineWidth = 1.4; ctx.stroke();
+    // woodpecker hole
+    ctx.fillStyle = '#060504'; ctx.beginPath(); ctx.arc(51 * k, 34.5 * k, .9 * k, 0, TAU); ctx.fill();
+    // brackets
+    [[39.8, 52], [40.6, 55.5]].forEach(([x, y], i) => { ctx.fillStyle = i ? '#d9a35a' : '#e8b86a'; ctx.beginPath(); ctx.ellipse(x * k, y * k, 3.4 * k, 1.1 * k, -.08, 0, Math.PI); ctx.fill(); ctx.strokeStyle = '#6b4a20'; ctx.lineWidth = 1; ctx.stroke(); });
+    // burr
+    ctx.fillStyle = '#16140e'; ctx.beginPath(); ctx.arc(44 * k, 73 * k, 3 * k, 0, TAU); ctx.fill(); ctx.strokeStyle = '#ebe2c8'; ctx.lineWidth = 1; ctx.stroke(); for (let i = 0; i < 14; i++) { const a = R() * TAU, rr = R() * 2.4; ctx.fillStyle = 'rgba(235,226,200,.7)'; ctx.beginPath(); ctx.arc((44 + Math.cos(a) * rr) * k, (73 + Math.sin(a) * rr) * k, .25 * k, 0, TAU); ctx.fill(); }
+    // epicormic shoots
+    ctx.strokeStyle = '#a9c26c'; ctx.lineWidth = 1; [[56.5, 62, 1], [57, 64.5, 1], [56, 60, -1]].forEach(([x, y, d]) => { ctx.beginPath(); ctx.moveTo(x * k, y * k); ctx.quadraticCurveTo((x + d * 2) * k, (y - 1) * k, (x + d * 3.5) * k, (y - 2.6) * k); ctx.stroke(); for (let j = 0; j < 3; j++) { ctx.fillStyle = '#a9c26c'; ctx.beginPath(); ctx.ellipse((x + d * (1 + j)) * k, (y - .6 - j * .7) * k, .7 * k, .35 * k, -.6 * d, 0, TAU); ctx.fill(); } });
+    // healed wound
+    ctx.strokeStyle = '#ebe2c8'; ctx.lineWidth = 1.6; ctx.fillStyle = '#2e2418'; ctx.beginPath(); ctx.ellipse(57.5 * k, 79 * k, 1.2 * k, 5 * k, .2, 0, TAU); ctx.fill(); ctx.stroke(); ctx.lineWidth = 1; ctx.beginPath(); ctx.ellipse(57.5 * k, 79 * k, 2 * k, 6 * k, .2, 0, TAU); ctx.stroke();
+    // lichens (orange) and moss (green) on opposite sides
+    for (let i = 0; i < 30; i++) { ctx.fillStyle = `rgba(232,150,40,${.6 + R() * .3})`; ctx.beginPath(); ctx.arc((40 + R() * 3.5) * k, (60 + R() * 8) * k, (.3 + R() * .45) * k, 0, TAU); ctx.fill(); }
+    for (let i = 0; i < 40; i++) { ctx.fillStyle = `rgba(110,160,70,${.6 + R() * .3})`; ctx.beginPath(); ctx.arc((59.5 + R() * 3) * k, (66 + R() * 9) * k, (.3 + R() * .4) * k, 0, TAU); ctx.fill(); }
+    // wind arrow
+    ctx.strokeStyle = 'rgba(235,226,200,.75)'; ctx.lineWidth = 1.2; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(8 * k, 10 * k); ctx.lineTo(26 * k, 10 * k); ctx.stroke(); ctx.setLineDash([]); ctx.beginPath(); ctx.moveTo(26 * k, 10 * k); ctx.lineTo(24 * k, 8.8 * k); ctx.moveTo(26 * k, 10 * k); ctx.lineTo(24 * k, 11.2 * k); ctx.stroke();
+    ctx.font = `500 ${Math.max(10, 1.6 * k)}px Figtree, system-ui, sans-serif`; ctx.fillStyle = 'rgba(235,226,200,.75)'; ctx.fillText('prevailing wind', 8 * k, 8 * k);
+  }
+  hotFigure('#read-fig', '#read-canvas', '#read-info', SPOTS, s => `<p class="eyebrow">What it tells you: ${esc(s.what)}</p><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p>`, draw);
+})();
+
+/* ================= the long death ================= */
+(() => {
+  const cv = $('#decay-canvas'), range = $('#decay-range'), info = $('#decay-info'); if (!cv) return;
+  const ST = [
+    { t: 'Veteran', yrs: 'Year 300 onward', p: 'The tree is still growing, but slowly. Its crown may be shrinking back to a lower, sturdier shape, a natural process called retrenchment that helps old trees survive storms.', who: ['Lichens and mosses on the bark', 'Birds nesting in woodpecker holes', 'Caterpillars and the birds that eat them'] },
+    { t: 'Hollowing', yrs: 'Decades to centuries', p: 'Heart-rot fungi eat the dead centre. Branches high in the crown die and turn silver, giving the "stag-headed" look of an ancient oak. The living sleeve of wood keeps the tree alive.', who: ['Bats and owls in the hollows', 'Rare beetles in the wood mould', 'Bracket fungi on the trunk'] },
+    { t: 'Standing dead', yrs: 'Years to decades', p: 'A dead standing trunk, or snag, is a high-rise apartment block. The wood softens enough for woodpeckers to carve new holes each year. Bark loosens and falls away in sheets.', who: ['Woodpeckers and the birds that reuse their holes', 'Wood-boring beetle larvae', 'Bats roosting under loose bark'] },
+    { t: 'Fallen log', yrs: 'Decades', p: 'On the ground the wood stays damp, and the decomposers take over. As the roots tear up, they leave a pit and mound, mixing the soil. Fungi, slugs, beetles and woodlice move in.', who: ['Fungi threading through the wood', 'Stag beetle larvae', 'Salamanders, toads and wrens sheltering underneath'] },
+    { t: 'Nurse log', yrs: 'A century or more', p: 'In damp forests, a rotting log becomes a nursery. Moss holds water, the soft wood holds nutrients, and seedlings rooted on it rise above the competition of the forest floor. Years later you can see young trees standing in a line, on stilts where the log has rotted away.', who: ['Tree seedlings', 'Mosses, liverworts and ferns', 'Soil animals returning the last of the wood to the earth'] }
+  ];
+  let cur = 0, prev = 0, mixT = 1, start = 0;
+  const R0 = rng(4), trees = [];
+  const crown = genTree({ ...SPECIES_SPECS.oak, depth: 7, build: br => br(80, 100, UP, 18, 9, 0) }, 300);
+  function stage(ctx, k, i) {
+    const R = rng(i * 31 + 7);
+    ctx.strokeStyle = 'rgba(235,226,200,.5)'; ctx.lineWidth = 1; for (let j = 0; j < 60; j++) { const x = R() * 160, y = 100 + R() * 4; ctx.beginPath(); ctx.moveTo(x * k, y * k); ctx.lineTo((x + 3) * k, y * k); ctx.stroke(); }
+    if (i === 0) inkDraw(ctx, k, crown.segs, crown.tips, { leafR: 6, leafN: 30 }, R);
+    if (i === 1) {
+      const segs = crown.segs.map(s => ({ ...s, dead: s.y2 < 30 })), tips = crown.tips.filter(t => t.y > 32);
+      inkDraw(ctx, k, segs.filter(s => !(s.y2 < 30 && s.d > 4)), tips, { leafR: 5, leafN: 22 }, R);
+      ctx.fillStyle = '#060504'; ctx.beginPath(); ctx.ellipse(80 * k, 76 * k, 2.4 * k, 6 * k, 0, 0, TAU); ctx.fill(); ctx.strokeStyle = '#ebe2c8'; ctx.lineWidth = 1.4; ctx.stroke();
+      [[75, 82], [76, 86]].forEach(([x, y]) => { ctx.fillStyle = '#e8b86a'; ctx.beginPath(); ctx.ellipse(x * k, y * k, 4 * k, 1.2 * k, 0, 0, Math.PI); ctx.fill(); });
+    }
+    if (i === 2) {
+      const segs = crown.segs.filter(s => s.d < 2 && s.y2 > 40).map(s => ({ ...s, dead: true }));
+      inkDraw(ctx, k, segs, [], {}, R);
+      ctx.fillStyle = '#16140e'; ctx.strokeStyle = '#ebe2c8'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(75 * k, 50 * k); ctx.lineTo(77 * k, 44 * k); ctx.lineTo(79 * k, 48 * k); ctx.lineTo(82 * k, 41 * k); ctx.lineTo(85 * k, 50 * k); ctx.stroke();
+      [[79, 60], [81.5, 66], [78, 72]].forEach(([x, y]) => { ctx.fillStyle = '#060504'; ctx.beginPath(); ctx.arc(x * k, y * k, 1 * k, 0, TAU); ctx.fill(); });
+      ctx.strokeStyle = 'rgba(235,226,200,.5)'; ctx.beginPath(); ctx.moveTo(86 * k, 70 * k); ctx.quadraticCurveTo(90 * k, 74 * k, 88 * k, 80 * k); ctx.stroke();
+      ctx.fillStyle = '#e8b86a'; ctx.beginPath(); ctx.ellipse(76 * k, 84 * k, 4 * k, 1.2 * k, 0, 0, Math.PI); ctx.fill();
+    }
+    if (i >= 3) {
+      const len = i === 3 ? 90 : 84, y = i === 3 ? 95 : 98, h = i === 3 ? 9 : 5;
+      ctx.fillStyle = i === 3 ? '#2a2016' : '#23301c'; ctx.beginPath(); ctx.ellipse(80 * k, y * k, len / 2 * k, h / 2 * k, 0, 0, TAU); ctx.fill();
+      ctx.strokeStyle = '#ebe2c8'; ctx.lineWidth = 1.2; ctx.stroke();
+      for (let j = 0; j < (i === 3 ? 10 : 4); j++) { ctx.strokeStyle = 'rgba(235,226,200,.35)'; ctx.beginPath(); const x = 40 + R() * 80; ctx.moveTo(x * k, (y - h / 2 + 1) * k); ctx.lineTo((x + 6) * k, (y - h / 2 + 1.5) * k); ctx.stroke(); }
+      if (i === 3) {
+        ctx.fillStyle = '#16140e'; ctx.strokeStyle = '#ebe2c8'; ctx.beginPath(); ctx.ellipse(126 * k, 88 * k, 6 * k, 12 * k, .1, 0, TAU); ctx.fill(); ctx.stroke();
+        for (let j = 0; j < 14; j++) { const a = R() * TAU; ctx.beginPath(); ctx.moveTo(126 * k, 88 * k); ctx.lineTo((126 + Math.cos(a) * 9) * k, (88 + Math.sin(a) * 14) * k); ctx.stroke(); }
+        [[60, 90.5], [64, 90.8], [92, 90.5]].forEach(([x, yy]) => { ctx.fillStyle = '#d8c09a'; ctx.beginPath(); ctx.ellipse(x * k, yy * k, 2 * k, .9 * k, 0, Math.PI, TAU); ctx.fill(); ctx.fillRect((x - .3) * k, yy * k, .6 * k, 1.2 * k); });
+      }
+      for (let j = 0; j < 60; j++) { ctx.fillStyle = `rgba(110,160,70,${.5 + R() * .4})`; ctx.beginPath(); ctx.arc((40 + R() * 80) * k, (y - h / 2 + R() * 1.5) * k, (.4 + R() * .5) * k, 0, TAU); ctx.fill(); }
+      if (i === 4) { [52, 66, 80, 94, 108].forEach((x, j) => { const H = 10 + j % 2 * 6; ctx.strokeStyle = '#ebe2c8'; ctx.lineWidth = 1.3; ctx.beginPath(); ctx.moveTo(x * k, (y - h / 2) * k); ctx.lineTo(x * k, (y - h / 2 - H) * k); ctx.stroke(); ctx.fillStyle = '#4f7f3a'; ctx.beginPath(); ctx.moveTo(x * k, (y - h / 2 - H - 4) * k); ctx.lineTo((x + 3) * k, (y - h / 2 - 2) * k); ctx.lineTo((x - 3) * k, (y - h / 2 - 2) * k); ctx.fill(); }); }
+    }
+  }
+  function draw(now) {
+    const { ctx, w, h } = fitCanvas(cv, 2), k = w / 160;
+    const g = ctx.createLinearGradient(0, 0, 0, h); g.addColorStop(0, '#1d2a1d'); g.addColorStop(.83, '#253020'); g.addColorStop(.84, '#2a1f15'); g.addColorStop(1, '#17110c'); ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+    ctx.save(); ctx.translate(0, (h - 120 * k) / 2);
+    if (mixT < 1) { ctx.globalAlpha = 1 - mixT; stage(ctx, k, prev); }
+    ctx.globalAlpha = mixT; stage(ctx, k, cur); ctx.globalAlpha = 1; ctx.restore();
+  }
+  function set(i) {
+    prev = cur; cur = i; mixT = isCalm() ? 1 : 0; start = performance.now();
+    const s = ST[i];
+    info.innerHTML = `<div class="card"><p class="eyebrow">${esc(s.yrs)}</p><h3 id="decay-title">${esc(s.t)}</h3><p>${esc(s.p)}</p></div><div class="card"><span class="small muted">Who lives here now</span><ul class="species-list">${s.who.map(x => `<li><span>${esc(x)}</span></li>`).join('')}</ul></div>`;
+    range.setAttribute('aria-valuetext', s.t);
+    const tick = t => { mixT = Math.min(1, (t - start) / 900); draw(t); if (mixT < 1) requestAnimationFrame(tick); };
+    if (isCalm()) draw(0); else requestAnimationFrame(tick);
+  }
+  range.addEventListener('input', () => set(+range.value));
+  new ResizeObserver(() => draw(0)).observe(cv);
+  set(0);
+})();
+
+/* ================= salmon forest ================= */
+(() => {
+  const stage = $('#salmon-stage'), cv = $('#salmon-canvas'); if (!cv) return;
+  let G = null;
+  function build(w, h) {
+    const R = rng(24), riverY = h * .8, trees = [];
+    for (let x = w * .22; x < w * .98; x += 16 + R() * 18) trees.push({ x, H: h * (.25 + R() * .2), y: riverY - h * (.08 + R() * .1) });
+    trees.sort((a, b) => a.y - b.y);
+    return { w, h, riverY, trees, hero: trees.reduce((m, t) => Math.abs(t.x - w * .66) < Math.abs(m.x - w * .66) ? t : m) };
+  }
+  const fish = (ctx, x, y, s, flip, t) => { ctx.save(); ctx.translate(x, y); if (flip) ctx.scale(-1, 1); const wag = Math.sin(t / 120) * .3; ctx.fillStyle = '#c8473a'; ctx.beginPath(); ctx.ellipse(0, 0, s * 1.6, s * .55, 0, 0, TAU); ctx.fill(); ctx.beginPath(); ctx.moveTo(-s * 1.4, 0); ctx.lineTo(-s * 2.4, -s * .6 + wag * s); ctx.lineTo(-s * 2.4, s * .6 + wag * s); ctx.fill(); ctx.fillStyle = '#4a6a3a'; ctx.beginPath(); ctx.ellipse(s * .2, -s * .3, s * 1.2, s * .2, 0, 0, TAU); ctx.fill(); ctx.restore(); };
+  const bear = (ctx, x, y, s, flip) => { ctx.save(); ctx.translate(x, y); if (flip) ctx.scale(-1, 1); ctx.fillStyle = '#3a2618'; ctx.beginPath(); ctx.ellipse(0, -s * 1.1, s * 2, s * 1.1, 0, 0, TAU); ctx.fill(); ctx.beginPath(); ctx.ellipse(-s * .6, -s * 1.9, s * .9, s * .6, 0, 0, TAU); ctx.fill(); ctx.beginPath(); ctx.arc(s * 2, -s * 1.5, s * .7, 0, TAU); ctx.fill(); ctx.beginPath(); ctx.arc(s * 1.8, -s * 2.15, s * .22, 0, TAU); ctx.arc(s * 2.3, -s * 2.1, s * .22, 0, TAU); ctx.fill(); ctx.fillRect(-s * 1.5, -s * .4, s * .55, s * .9); ctx.fillRect(s * 1, -s * .4, s * .55, s * .9); ctx.fillStyle = '#5a3a24'; ctx.beginPath(); ctx.ellipse(s * 2.6, -s * 1.4, s * .35, s * .25, 0, 0, TAU); ctx.fill(); ctx.restore(); };
+  function frame(t, still) {
+    const r = cv.getBoundingClientRect(); if (!G || Math.abs(G.w - r.width) > 1 || Math.abs(G.h - r.height) > 1) G = build(r.width, r.height);
+    const { ctx, w, h } = fitCanvas(cv, 2), { riverY, trees, hero } = G; if (still) t = 5200;
+    let g = ctx.createLinearGradient(0, 0, 0, h); g.addColorStop(0, '#8fa8a8'); g.addColorStop(.4, '#4a6a5a'); g.addColorStop(1, '#22301f'); ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = '#2f5f7a'; ctx.fillRect(0, h * .45, w * .14, h * .55);
+    ctx.fillStyle = 'rgba(200,230,240,.25)'; for (let i = 0; i < 8; i++) ctx.fillRect(w * .01 + i * 9, h * .5 + (i % 3) * 20, 6, 1);
+    ctx.fillStyle = '#2a3a22'; ctx.beginPath(); ctx.moveTo(w * .14, h * .5); ctx.lineTo(w, h * .42); ctx.lineTo(w, riverY - h * .03); ctx.lineTo(w * .14, riverY - h * .03); ctx.fill();
+    // river
+    ctx.fillStyle = '#3d6f88'; ctx.beginPath(); ctx.moveTo(0, riverY - h * .04); for (let x = 0; x <= w; x += 20) ctx.lineTo(x, riverY - h * .04 + Math.sin(x * .02) * 3); ctx.lineTo(w, h); ctx.lineTo(0, h); ctx.fill();
+    ctx.fillStyle = '#1d2716'; ctx.fillRect(0, riverY + h * .1, w, h);
+    // trees (Sitka spruce)
+    trees.forEach(tr => {
+      const glow = tr === hero ? .5 + .5 * Math.sin(t / 600) : 0;
+      ctx.fillStyle = '#3a2a1e'; ctx.fillRect(tr.x - 2, tr.y - tr.H * .2, 4, tr.H * .2);
+      ctx.fillStyle = tr === hero ? mix('#1f3d27', '#3f7a3a', glow * .6) : '#1f3d27';
+      for (let k2 = 0; k2 < 4; k2++) { const yy = tr.y - tr.H * (.15 + k2 * .22), ww = tr.H * (.32 - k2 * .07); ctx.beginPath(); ctx.moveTo(tr.x, yy - tr.H * .3); ctx.lineTo(tr.x + ww, yy); ctx.lineTo(tr.x - ww, yy); ctx.fill(); }
+    });
+    // salmon running upstream
+    for (let i = 0; i < 6; i++) { const p = ((t / 9000) + i / 6) % 1, x = w * .1 + p * w * .85, y = riverY + Math.sin(p * 12 + i) * h * .025 + (i % 2) * h * .03; fish(ctx, x, y, Math.max(4, w * .008), false, t + i * 200); }
+    // the bear carries a salmon to the hero tree
+    const c = (t % 10000) / 10000, bx0 = w * .5, by0 = riverY - h * .02, bx1 = hero.x - 26, by1 = hero.y + 6, S = Math.max(8, w * .016);
+    let bx, by, carry = false;
+    if (c < .2) { bx = bx0; by = by0; } else if (c < .5) { const p = (c - .2) / .3; bx = bx0 + (bx1 - bx0) * p; by = by0 + (by1 - by0) * p; carry = true; } else if (c < .7) { bx = bx1; by = by1; } else { const p = (c - .7) / .3; bx = bx1 + (bx0 - bx1) * p; by = by1 + (by0 - by1) * p; }
+    bear(ctx, bx, by, S, c >= .7);
+    if (carry) fish(ctx, bx + S * 2.8, by - S * 1.2, S * .5, false, t);
+    if (c >= .5) { fish(ctx, bx1 + S * 3.6, by1 - 2, S * .5, false, 0); }
+    // nitrogen rising into the spruce
+    if (c > .55 || still) { for (let i = 0; i < 10; i++) { const p = ((t / 1800) + i / 10) % 1, x = bx1 + S * 3.6 + (hero.x - bx1 - S * 3.6) * Math.min(1, p * 2), y = by1 - (p > .5 ? (p - .5) * 2 * hero.H * .9 : 0) + Math.sin(p * 20 + i) * 2; ctx.fillStyle = `rgba(167,217,138,${.9 - p * .5})`; ctx.beginPath(); ctx.moveTo(x, y - 3); ctx.lineTo(x + 3, y); ctx.lineTo(x, y + 3); ctx.lineTo(x - 3, y); ctx.fill(); } }
+    // insects and needles dropping to the stream
+    for (let i = 0; i < 6; i++) { const tr = trees[(i * 3) % trees.length], p = ((t / 3000) + i / 6) % 1; ctx.fillStyle = 'rgba(240,230,180,.8)'; ctx.beginPath(); ctx.arc(tr.x + Math.sin(p * 8) * 6, tr.y - tr.H * .3 + p * (riverY - tr.y + tr.H * .3), 1.3, 0, TAU); ctx.fill(); }
+    ctx.font = '600 11px Figtree, system-ui, sans-serif';
+    const lab = (txt, x, y) => { const tw = ctx.measureText(txt).width; x = Math.max(6, Math.min(w - tw - 12, x)); ctx.fillStyle = 'rgba(8,14,10,.68)'; ctx.fillRect(x - 5, y - 12, tw + 10, 17); ctx.fillStyle = '#f4f2e6'; ctx.fillText(txt, x, y); };
+    lab('Ocean', 8, h * .5 + 16); lab('Salmon swim upstream to spawn', w * .2, riverY + h * .09); lab('A bear carries the catch into the forest', bx1 - w * .25, by1 + h * .1);
+    lab('≈ 1/4 of this spruce\'s needle nitrogen is from the sea', hero.x - w * .22, hero.y - hero.H - 10);
+    lab('Shade and falling insects feed young fish', w * .24, h * .1);
+  }
+  loop(stage, frame);
+})();
 
 /* ================= gentle rise as sections arrive ================= */
 (() => {
