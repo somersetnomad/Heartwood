@@ -6,26 +6,36 @@ Heartwood is a single-page educational experience about trees. The whole page is
 
 ## What's inside
 
-- **A living world tree.** One continuous tree is drawn on a canvas across the whole page, with these parts from top to bottom:
-  - Dawn sky and swaying foliage.
-  - Light shafts through the leaves.
-  - Bark-textured limbs.
-  - The inside of the trunk, with water rising and sugar sinking.
-  - Labelled soil layers.
-  - Roots joined by glowing mycelium.
-- **Leaf microscope (×400).**
-  - Chloroplasts streaming inside palisade cells.
-  - A stoma opening and closing, with gases moving through it.
-  - A day/night toggle.
-- **Root tip microscope (×600).** Sugar, nutrients and water trading between root cells and fungi. You can switch between the two kinds of partnership: ectomycorrhizal and arbuscular.
-- **Mycelium network explorer.** Choose a tree and watch carbon, nitrogen, water and defence signals move through the network. Every claim is tagged with how strong the evidence is.
-- **Growth rings timeline.** A 360-year English oak whose rings record real events, from the Great Frost of 1709 to the Great Storm of 1987.
-- **Engraved species plates.** Eight trees, each drawn branch by branch as it scrolls into view.
-- **Tree Journal.**
-  - Record encounters with trees, including photos.
-  - Write answers to reflection prompts.
-  - Follow a "tree friend" through the seasons.
-- **Honour moment.** A guided breathing minute, a personal promise of care, and an invitation to step outside.
+**The living world tree.** One continuous tree is drawn behind the whole page: dawn sky, swaying crown with light shafts, bark-textured limbs, the inside of the trunk with water rising and sugar sinking, labelled soil layers, and roots joined by glowing mycelium.
+
+**Canopy**
+- **Leaf microscope (×400).** Chloroplasts streaming, a stoma breathing, gases in and out, with a day/night toggle.
+- **Life in the crown.** An animated woodland in storeys: tits timing their broods to oak caterpillars, a jay planting acorns, a woodpecker drumming, a nuthatch walking down a trunk, a treecreeper spiralling up, an owl in a hollow. Plus seed-caching nutcrackers, fig-eating hornbills and harpy eagles.
+- **Messages on the wind.** Seven ways trees signal: airborne alarms, calling parasitic wasps and birds, bitter leaves, flowers and fruit, ultrasonic clicks of thirst, electrical alarms, and fungal links. Each one is animated and rated for evidence.
+- **Rivers in the sky.** How forests recycle rain inland and seed clouds.
+- **Seasons** and the private **Tree Journal**.
+
+**Branches**
+- Engraved species plates, drawn branch by branch.
+- Forest biomes.
+- **A world on one tree.** An explorable oak supporting 2,300 species.
+- Trees and climate, with a carbon calculator.
+- **Trees and us.** Hospital views, street trees, the ash borer study and forest bathing, sorted by strength of evidence.
+- Culture and myth.
+
+**Trunk**
+- Anatomy and a 360-year growth-ring timeline.
+- **Reading a tree.** Ten signs on a veteran oak and what they mean.
+- **The long death.** From veteran to nurse log, and who lives at each stage.
+
+**Roots**
+- **Root tip microscope (×600).** The trade between root and fungus, in both kinds of partnership.
+- **Mycelium network explorer.**
+- **The fungal kingdom.**
+- **Forest, river and sea.** Salmon forests and Japan's oyster-farmer tree planters.
+- An honest evidence summary and full sources.
+
+**Honour moment.** A breathing minute, a personal promise, and an invitation to step outside.
 
 ## Science and honesty
 
